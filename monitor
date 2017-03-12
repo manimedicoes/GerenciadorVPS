@@ -1,0 +1,19 @@
+#/bin/bash
+#BY https://telegram.me/NetHttpInjectorGratis
+while true ; do
+clear
+echo "--------------------------------------------"
+tput setaf 4 ; tput setab 7 ; echo "              Usuários    |    Conectados               " ; tput sgr0
+echo "--------------------------------------------"
+
+
+        for usur in `awk -F : '$3 > 900 { print $1 }' /etc/passwd |grep -v "nobody" |grep -vi polkitd |grep -vi systemd-[a-z] |grep -vi systemd-[0-9]`; do
+        usurnum=$(ps -u $usur |grep sshd |wc -l)
+        echo -e "\033[1;33m    $(printf '%-42s%s' $usur $usurnum) \033[0m"
+
+tput setaf 3 ;
+echo -e "              $sshs\t         $nssh " ; tput sgr0
+echo "--------------------------------------------"
+done
+sleep 8
+done
