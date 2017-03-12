@@ -11,4 +11,6 @@ tput setaf 1 ; tput bold ; printf '%s' "mudarsenha " ; tput setaf 7 ; printf '%s
 tput setaf 1 ; tput bold ; printf '%s' "apagar " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 4 ; echo "Remove o usuário selecionado, se ele estiver em uso, use o comando: kill pid, onde o pid é um nº mostrado pelo sistema quando você tentar apagar o usuário" ; echo ""
 tput setaf 1 ; tput bold ; printf '%s' "limpar " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 4 ; echo "Limpa o cache da memoria ociosa para o VPS ficar mais rápido" ; echo ""
 tput setaf 1 ; tput bold ; printf '%s' "velocimetro " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 4 ; echo "Testa a velocidade TOTAL da VPS em MegaBits (Mb), 8Mb = 1 MegaByte (MB) faça a conta e veja a velocidade real de sua VPS" ; echo ""
+tput setaf 1 ; tput bold ; printf '%s' "Ctrl+c " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 4 ; echo "Sai de um comando que fica rodando direto" ; echo ""
+tput setaf 2 ; tput bold ; printf '%s' "PUBLIC KEY Chave Pública " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Autenticação por CHAVE PÚBLICA sem a necessidade de usar SENHA, funciona no HTTP INJECTOR e no KPNTUNNEL ULTIMATE, CONTATO Telegram @FranciscoManim lhe vendo por R$100 via depósito, assim sua VPS fica quase 100% segura" ; echo ""
 tput sgr0
