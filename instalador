@@ -1,9 +1,11 @@
 #!/bin/bash
-tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "Gerenciador de VPS ManimEdicoes" ; tput sgr0
-tput setaf 3 ; tput bold ; echo "" ; echo "Este script irá:" ; echo ""
+tput setaf 1 ; tput setab 2 ; tput bold ; printf '%35s%s%-20s\n' "Gerenciador de VPS ManimEdicoes Telegram: @FranciscoManim" ; tput sgr0
+tput setaf 4 ; tput bold ; echo "" ; echo "Este script de VPS irá:" ; echo ""
 echo "● Instalar e configurar o proxy squid nas portas 80, 3128" ; echo "  para permitir conexões SSH para este servidor"
 echo "● Configurar o OpenSSH para rodar nas portas 22 e 443"
-echo "● Instalar um conjunto de comandos do sistema para o gerenciamento de usuários, e da VPS" ; tput sgr0
+echo "● Configurar o squid para AUTOLIMPAR o cache deixando-o mais rápido"
+echo "● Configurar o log de acesso para monitoração de sites acessados"
+echo "● Instalar um conjunto de COMANDOS para facilitar ; echo " o gerenciamento de usuários e da VPS" ; tput sgr0
 echo ""
 tput setaf 3 ; tput bold ; read -n 1 -s -p "Aperte qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
 IP=$(wget -qO- ipv4.icanhazip.com)
@@ -33,7 +35,7 @@ echo ""
 tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "Aguarde a configuração automática" ; echo "" ; tput sgr0
 sleep 3
 apt-get update -y
-rm /bin/criarusuario /bin/expcleaner /bin/sshlimiter /bin/addhost /bin/listar /bin/sshmonitor /bin/ajuda > /dev/null
+rm /bin/criarusuario /bin/expcleaner /bin/sshlimiter /bin/addhost /bin/listar /bin/sshmonitor /bin/ajuda  /bin/detalhes /bin/delhost /bin/criar /bin/apagar /bin/mudardata /bin/limitador /bin/limpar /bin/monitor /bin/mudarsenha /bin/velocimetro /bin/velocimetro-cgi > /dev/null
 rm /root/ExpCleaner.sh /root/CriarUsuario.sh /root/sshlimiter.sh > /dev/null
 apt-get install squid3 bc screen nano unzip dos2unix wget -y
 killall apache2
@@ -49,6 +51,14 @@ then
 	cat /tmp/sqd1 /tmp/sqd2 /tmp/sqd3 > /etc/squid3/squid.conf
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/payload -O /etc/squid3/payload.txt
 	echo " " >> /etc/squid3/payload.txt
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/sites_bloqueados -O /etc/squid3/sites_bloqueados.txt
+	echo " " >> /etc/squid3/sites_bloqueados.txt
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/formato_arquivo -O /etc/squid3/formato_arquivo.txt
+	echo " " >> /etc/squid3/formato_arquivo.txt
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/access.log -O /var/log/squid3/access.log
+	echo " " >> /var/log/squid3/access.log
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/squid3.pid -O /var/log/squid3/squid3.pid
+	echo " " >> /var/log/squid3/squid3.pid
 	grep -v "^Port 443" /etc/ssh/sshd_config > /tmp/ssh && mv /tmp/ssh /etc/ssh/sshd_config
 	echo "Port 443" >> /etc/ssh/sshd_config
 	grep -v "^PasswordAuthentication yes" /etc/ssh/sshd_config > /tmp/passlogin && mv /tmp/passlogin /etc/ssh/sshd_config
@@ -75,6 +85,8 @@ then
 	chmod +x /bin/apagar
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro -O /bin/velocimetro
 	chmod +x /bin/velocimetro
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro-cgi -O /bin/velocimetro-cgi
+	chmod +x /bin/velocimetro-cgi
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/ajuda -O /bin/ajuda
 	chmod +x /bin/ajuda
 	if [ ! -f "/etc/init.d/squid3" ]
@@ -92,12 +104,20 @@ then
 fi
 if [ -d "/etc/squid/" ]
 then
-	wget http://phreaker56.xyz/vpsmanager/squid1.txt -O /tmp/sqd1
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/squid1 -O /tmp/sqd1
 	echo "acl url3 dstdomain -i $ipdovps" > /tmp/sqd2
-	wget http://phreaker56.xyz/vpsmanager/squid.txt -O /tmp/sqd3
-	cat /tmp/sqd1 /tmp/sqd2 /tmp/sqd3 > /etc/squid/squid.conf
-	wget http://phreaker56.xyz/vpsmanager/payload.txt -O /etc/squid/payload.txt
-	echo " " >> /etc/squid/payload.txt
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/squid2 -O /tmp/sqd3
+	cat /tmp/sqd1 /tmp/sqd2 /tmp/sqd3 > /etc/squid3/squid.conf
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/payload -O /etc/squid3/payload.txt
+	echo " " >> /etc/squid3/payload.txt
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/sites_bloqueados -O /etc/squid3/sites_bloqueados.txt
+	echo " " >> /etc/squid3/sites_bloqueados.txt
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/formato_arquivo -O /etc/squid3/formato_arquivo.txt
+	echo " " >> /etc/squid3/formato_arquivo.txt
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/access.log -O /var/log/squid3/access.log
+	echo " " >> /var/log/squid3/access.log
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/squid3.pid -O /var/log/squid3/squid3.pid
+	echo " " >> /var/log/squid3/squid3.pid
 	grep -v "^Port 443" /etc/ssh/sshd_config > /tmp/ssh && mv /tmp/ssh /etc/ssh/sshd_config
 	echo "Port 443" >> /etc/ssh/sshd_config
 	grep -v "^PasswordAuthentication yes" /etc/ssh/sshd_config > /tmp/passlogin && mv /tmp/passlogin /etc/ssh/sshd_config
@@ -124,9 +144,11 @@ then
 	chmod +x /bin/apagar
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro -O /bin/velocimetro
 	chmod +x /bin/velocimetro
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro-cgi -O /bin/velocimetro-cgi
+	chmod +x /bin/velocimetro-cgi
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/ajuda -O /bin/ajuda
 	chmod +x /bin/ajuda
-	if [ ! -f "/etc/init.d/squid" ]
+	if [ ! -f "/etc/init.d/squid3" ]
 	then
 		service squid reload > /dev/null
 	else
