@@ -1,0 +1,14 @@
+#!/bin/bash
+tput setaf 1 ; tput setab 2 ; tput bold ; printf '%30s%s%-10s\n' "COMANDOS DISPONÍVEIS:" ; tput sgr0 ; echo ""
+tput setaf 1 ; tput bold ; printf '%s' "criar " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 4 ; echo "Cria usuário com data de expiração e pronto para autenticação via CHAVE PÚBLICA sem a necessidade de SENHA" ; echo ""
+tput setaf 1 ; tput bold ; printf '%s' "mudardata " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 4 ; echo "Mudar a data de expiração de um usuário" ; echo ""
+tput setaf 1 ; tput bold ; printf '%s' "detalhes " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 4 ; echo "Mostra usuários criados, suas senhas, limite de conexão e data de vencimento" ; echo ""
+tput setaf 1 ; tput bold ; printf '%s' "monitor " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 4 ; echo "Verifica o número de conexão simutânea de cada usuário" ; echo ""
+tput setaf 1 ; tput bold ; printf '%s' "limitador " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 4 ; echo "Limita TODOS os usuários para 1 conexão apenas" ; echo ""
+tput setaf 1 ; tput bold ; printf '%s' "addhost " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 4 ; echo "Adicionar domínio 'host' a lista de domínios permitidos no Proxy Squid" ; echo ""
+tput setaf 1 ; tput bold ; printf '%s' "delhost " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 4 ; echo "Remover domínio 'host' da lista de domínios permitidos no Proxy Squid" ; echo ""
+tput setaf 1 ; tput bold ; printf '%s' "mudarsenha " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 4 ; echo "Muda a senha do usuário selecionado" ; echo ""
+tput setaf 1 ; tput bold ; printf '%s' "apagar " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 4 ; echo "Remove o usuário selecionado, se ele estiver em uso, use o comando: kill pid, onde o pid é um nº mostrado pelo sistema quando você tentar apagar o usuário" ; echo ""
+tput setaf 1 ; tput bold ; printf '%s' "limpar " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 4 ; echo "Limpa o cache da memoria ociosa para o VPS ficar mais rápido" ; echo ""
+tput setaf 1 ; tput bold ; printf '%s' "velocimetro " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 4 ; echo "Testa a velocidade TOTAL da VPS em MegaBits (Mb), 8Mb = 1 MegaByte (MB) faça a conta e veja a velocidade real de sua VPS" ; echo ""
+tput sgr0
