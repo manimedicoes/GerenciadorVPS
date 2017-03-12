@@ -1,10 +1,11 @@
 acl vps4 dstdomain -i .br
 acl vps5 dstdomain -i .com
 acl vps6 dstdomain -i .sv
-acl payloads dstdomain -i "/etc/squid3/payloads.txt"
+acl payloads dstdomain -i "/etc/squid3/payload.txt"
 acl formato_arquivo url_regex -i "/etc/squid3/formato_arquivo.txt"
-acl sites_bloqueados dstdomain -i "/etc/squid3/sites_bloqueados.txt"
+acl sites_bloqueados url_regex -i "/etc/squid3/sites_bloqueados.txt"
 acl netflix dstdomain .netflix.
+acl youtube dstdomain .youtube.
 acl downloads_proibidos url_regex -i \.torrent
 
 acl CONNECT method CONNECT
@@ -29,13 +30,14 @@ http_access allow vps6
 http_access deny formato_arquivo
 http_access deny sites_bloqueados
 http_access allow netflix
+http_access allow youtube
 http_access deny downloads_proibidos
 http_access deny all
 
 http_port 80
 http_port 3128
 
-visible_hostname Telegram:@NetGratisMobile
+visible_hostname Telegram:@NetGratisMobileE
 
 cache_mem 100 MB
 maximum_object_size_in_memory 64 KB
