@@ -1,4 +1,3 @@
-
 acl vps4 dstdomain -i .br
 acl vps5 dstdomain -i .com
 acl vps6 dstdomain -i .sv
