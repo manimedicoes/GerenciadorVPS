@@ -1,11 +1,9 @@
 #!/bin/bash
-tput setaf 1 ; tput setab 2 ; tput bold ; printf '%35s%s%-20s\n' "Gerenciador de VPS ManimEdicoes Telegram: @FranciscoManim" ; tput sgr0
-tput setaf 4 ; tput bold ; echo "" ; echo "Este script de VPS irá:" ; echo ""
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "Gerenciador de VPS ManimEdicoes Telegram @FranciscoMAnim" ; tput sgr0
+tput setaf 3 ; tput bold ; echo "" ; echo "Este script irá:" ; echo ""
 echo "● Instalar e configurar o proxy squid nas portas 80, 3128" ; echo "  para permitir conexões SSH para este servidor"
 echo "● Configurar o OpenSSH para rodar nas portas 22 e 443"
-echo "● Configurar o squid para AUTOLIMPAR o cache deixando-o mais rápido"
-echo "● Configurar o log de acesso para monitoração de sites acessados."
-echo "● Instalar um conjunto de COMANDOS para facilitar ; echo " o gerenciamento de usuários e da VPS" ; tput sgr0
+echo "● Instalar um conjunto de comandos do sistema para o gerenciamento de usuários, e da VPS" ; tput sgr0
 echo ""
 tput setaf 3 ; tput bold ; read -n 1 -s -p "Aperte qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
 IP=$(wget -qO- ipv4.icanhazip.com)
@@ -63,6 +61,10 @@ then
 	echo "Port 443" >> /etc/ssh/sshd_config
 	grep -v "^PasswordAuthentication yes" /etc/ssh/sshd_config > /tmp/passlogin && mv /tmp/passlogin /etc/ssh/sshd_config
 	echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
+	grep -v "^PermitTunnel yes" /etc/ssh/sshd_config > /tmp/ssh && mv /tmp/ssh /etc/ssh/sshd_config
+	echo "PermitTunnel yes" >> /etc/ssh/sshd_config
+	grep -v "^#UseDns yes" /etc/ssh/sshd_config > /tmp/ssh && mv /tmp/ssh /etc/ssh/sshd_config
+	echo "#UseDns yes" >> /etc/ssh/sshd_config
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/addhost -O /bin/addhost
 	chmod +x /bin/addhost
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/criar -O /bin/criar
