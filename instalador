@@ -4,7 +4,7 @@ tput setaf 4 ; tput bold ; echo "" ; echo "Este script de VPS irá:" ; echo ""
 echo "● Instalar e configurar o proxy squid nas portas 80, 3128" ; echo "  para permitir conexões SSH para este servidor"
 echo "● Configurar o OpenSSH para rodar nas portas 22 e 443"
 echo "● Configurar o squid para AUTOLIMPAR o cache deixando-o mais rápido"
-echo "● Configurar o log de acesso para monitoração de sites acessados"
+echo "● Configurar o log de acesso para monitoração de sites acessados."
 echo "● Instalar um conjunto de COMANDOS para facilitar ; echo " o gerenciamento de usuários e da VPS" ; tput sgr0
 echo ""
 tput setaf 3 ; tput bold ; read -n 1 -s -p "Aperte qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
