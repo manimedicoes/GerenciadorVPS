@@ -1,14 +1,8 @@
 #! /bin/bash
 # -----------------------------------------------------------------------
 # Script: Internet Speed (Ispeed)
-# Author: Tiago Oliveira Weber
-# E-mail: towalker@gmail.com                 
-# 
-# Description: This script measures the internet download speed based on
-# the download speed mean of wget while downloading a big file from a 
-# server. 
-# The file the script is going to try to download can be changed by the 
-# user in the "link" variable.
+# Author: Francisco Manim Edicoes
+# Telegram: @FranciscoManim                 
 # -----------------------------------------------------------------------
 
 # Define links
