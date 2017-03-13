@@ -1,6 +1,6 @@
 #!/bin/bash
 # (1=vermelho; 2=verde; 3=amarelo; 4=azul; 5=roxo; 6=azul claro; 7=branco; 9=limpa)
-tput setaf 1 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "Gerenciador de VPS editada por ManimEdicoes Telegram @FranciscoManim" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "Gerenciador de VPS editada por ManimEdicoes Telegram @FranciscoManim" ; tput sgr0
 tput setaf 2 ; tput bold ; echo "" ; echo "Este script irá instalar no Debian ou Ubuntu:" ; echo ""
 echo "● Instalar e configurar o proxy squid nas portas 80 e 3128" ; echo "  para permitir conexões SSH para este servidor"
 echo "● Configurar o OpenSSH para rodar nas portas 22 e 443"
