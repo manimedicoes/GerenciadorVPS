@@ -3,11 +3,12 @@
 tput setaf 1 ; tput setab 7 ; tput bold ; printf '%35s%s%-20s\n' "Gerenciador de VPS editada por ManimEdicoes Telegram @FranciscoManim" ; tput sgr0
 tput setaf 2 ; tput bold ; echo "" ; echo "Este script irá instalar no Debian ou Ubuntu:" ; echo ""
 echo "● Instalar e configurar o proxy squid nas portas 80 e 3128" ; echo "  para permitir conexões SSH para este servidor"
+echo "● Configurar o OpenSSH para rodar nas portas 22 e 443"
 echo "● Configurar o squid para AutoLimpar o cache para" ; echo "  manter o squid sempre rápido"
 echo "● Bloquear TORRENT e SITES de invasões Sniffer"
-echo "● Configurar log de acesso para monitorar os" ; echo " sites acessados pelos usuários"
-echo "● Configurar o OpenSSH para rodar nas portas 22 e 443"
-echo "● Instalar um conjunto de comandos do sistema para o gerenciamento de usuários, e da VPS" ; tput sgr0
+echo "● Comandos para configurar os apps de net grátis" ; echo "  e payloads funcionando para todas as operadoras"
+echo "● Configurar log de acesso de usuário 'Debian: squid3, Ubuntu: squid'" ; echo " Comando: 'nano /var/log/squid3/access.log'."
+echo "● Instalar um conjunto de comandos para o gerenciamento da VPS" ; tput sgr0
 echo ""
 tput setaf 6 ; tput bold ; read -n 1 -s -p "Aperte qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
 IP=$(wget -qO- ipv4.icanhazip.com)
