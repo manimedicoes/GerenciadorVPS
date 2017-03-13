@@ -1,6 +1,7 @@
 #!/bin/bash
-tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "Gerenciador de VPS editada por ManimEdicoes Telegram @FranciscoManim" ; tput sgr0
-tput setaf 3 ; tput bold ; echo "" ; echo "Este script irá:" ; echo ""
+# (1=vermelho; 2=verde; 3=amarelo; 4=azul; 5=roxo; 6=azul claro; 7=branco; 9=limpa)
+tput setaf 1 ; tput setab 7 ; tput bold ; printf '%35s%s%-20s\n' "Gerenciador de VPS editada por ManimEdicoes Telegram @FranciscoManim" ; tput sgr0
+tput setaf 2 ; tput bold ; echo "" ; echo "Este script irá instalar no Debian ou Ubuntu:" ; echo ""
 echo "● Instalar e configurar o proxy squid nas portas 80 e 3128" ; echo "  para permitir conexões SSH para este servidor"
 echo "● Configurar o squid para AutoLimpar o cache para" ; echo "  manter o squid sempre rápido"
 echo "● Bloquear TORRENT e SITES de invasões Sniffer"
@@ -8,7 +9,7 @@ echo "● Configurar log de acesso para monitorar os" ; echo " sites acessados p
 echo "● Configurar o OpenSSH para rodar nas portas 22 e 443"
 echo "● Instalar um conjunto de comandos do sistema para o gerenciamento de usuários, e da VPS" ; tput sgr0
 echo ""
-tput setaf 3 ; tput bold ; read -n 1 -s -p "Aperte qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
+tput setaf 6 ; tput bold ; read -n 1 -s -p "Aperte qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
 IP=$(wget -qO- ipv4.icanhazip.com)
 read -p "Para continuar confirme se este é o IP do seu servidor: " -e -i $IP ipdovps
 if [ -z "$ipdovps" ]
@@ -18,11 +19,11 @@ then
 fi
 if [ -f "/root/usuarios.db" ]
 then
-tput setaf 6 ; tput bold ;	echo ""
+tput setaf 5 ; tput bold ;	echo ""
 	echo "Uma base de dados de usuários ('usuarios.db') foi encontrada!"
 	echo "Deseja mantê-la (preservando o limite de conexões dos usuários)"
 	echo "ou criar uma nova base de dados?"
-	tput setaf 6 ; tput bold ;	echo ""
+	tput setaf 2 ; tput bold ;	echo ""
 	echo "[1] Manter Base de Dados Atual, ela não sofrerá mudanças."
 	echo "[2] Criar uma Nova Base de Dados, apagará tudo da antiga."
 	echo "" ; tput sgr0
@@ -33,7 +34,7 @@ fi
 echo ""
 read -p "Ativar a compressão SSH (há ganho de performance em servidores acessados via internet)? [s/n]) " -e -i n sshcompression
 echo ""
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "Aguarde a configuração automática" ; echo "" ; tput sgr0
+tput setaf 4 ; tput setab 7 ; tput bold ; echo "" ; echo "Aguarde a configuração automática" ; echo "" ; tput sgr0
 sleep 3
 apt-get update -y
 rm /bin/criarusuario /bin/expcleaner /bin/sshlimiter /bin/addhost /bin/listar /bin/sshmonitor /bin/ajuda  /bin/detalhes /bin/delhost /bin/criar /bin/apagar /bin/mudardata /bin/limitador /bin/limpar /bin/monitor /bin/mudarsenha /bin/velocimetro.py /bin/velocimetro /bin/velocimetro-cgi > /dev/null
@@ -78,10 +79,16 @@ then
 	chmod +x /bin/mudardata
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/limitador -O /bin/limitador
 	chmod +x /bin/limitador
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/limitar -O /bin/limitar
+	chmod +x /bin/limitar
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/limpar -O /bin/limpar
 	chmod +x /bin/limpar
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/monitor -O /bin/monitor
 	chmod +x /bin/monitor
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/monitorar -O /bin/monitorar
+	chmod +x /bin/monitorar
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/mudarlimite -O /bin/mudarlimite
+	chmod +x /bin/mudarlimite
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/mudarsenha -O /bin/mudarsenha
 	chmod +x /bin/mudarsenha
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/delhost -O /bin/delhost
@@ -92,10 +99,12 @@ then
 	chmod +x /bin/apps
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/payloads -O /bin/payloads
 	chmod +x /bin/payloads
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocidade -O /bin/velocidade
+	chmod +x /bin/velocidade
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro -O /bin/velocimetro
 	chmod +x /bin/velocimetro
-	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro-cgi -O /bin/velocimetro-cgi
-	chmod +x /bin/velocimetro-cgi
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro.py -O /bin/velocimetro.py
+	chmod +x /bin/velocimetro.py
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/ajuda -O /bin/ajuda
 	chmod +x /bin/ajuda
 	if [ ! -f "/etc/init.d/squid3" ]
@@ -131,6 +140,10 @@ then
 	echo "Port 443" >> /etc/ssh/sshd_config
 	grep -v "^PasswordAuthentication yes" /etc/ssh/sshd_config > /tmp/passlogin && mv /tmp/passlogin /etc/ssh/sshd_config
 	echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
+	grep -v "^PermitTunnel yes" /etc/ssh/sshd_config > /tmp/ssh && mv /tmp/ssh /etc/ssh/sshd_config
+	echo "PermitTunnel yes" >> /etc/ssh/sshd_config
+	grep -v "^#UseDns yes" /etc/ssh/sshd_config > /tmp/ssh && mv /tmp/ssh /etc/ssh/sshd_config
+	echo "#UseDns yes" >> /etc/ssh/sshd_config
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/addhost -O /bin/addhost
 	chmod +x /bin/addhost
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/criar -O /bin/criar
@@ -141,24 +154,32 @@ then
 	chmod +x /bin/mudardata
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/limitador -O /bin/limitador
 	chmod +x /bin/limitador
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/limitar -O /bin/limitar
+	chmod +x /bin/limitar
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/limpar -O /bin/limpar
 	chmod +x /bin/limpar
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/monitor -O /bin/monitor
 	chmod +x /bin/monitor
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/monitorar -O /bin/monitorar
+	chmod +x /bin/monitorar
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/mudarlimite -O /bin/mudarlimite
+	chmod +x /bin/mudarlimite
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/mudarsenha -O /bin/mudarsenha
 	chmod +x /bin/mudarsenha
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/delhost -O /bin/delhost
 	chmod +x /bin/delhost
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/apagar -O /bin/apagar
 	chmod +x /bin/apagar
-	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/apps -O /bin/apps
-	chmod +x /bin/apps
-	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/payloads -O /bin/payloads
-	chmod +x /bin/payloads
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocidade -O /bin/velocidade
+	chmod +x /bin/velocidade
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro -O /bin/velocimetro
 	chmod +x /bin/velocimetro
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro.py -O /bin/velocimetro.py
 	chmod +x /bin/velocimetro.py
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/apps -O /bin/apps
+	chmod +x /bin/apps
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/payloads -O /bin/payloads
+	chmod +x /bin/payloads
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/ajuda -O /bin/ajuda
 	chmod +x /bin/ajuda
 	if [ ! -f "/etc/init.d/squid3" ]
@@ -175,9 +196,9 @@ then
 	fi
 fi
 echo ""
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "Proxy Squid Instalado e rodando nas portas: 80 e 3128" ; tput sgr0
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "OpenSSH rodando nas portas 22 e 443" ; tput sgr0
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "Para ver os COMANDOS DISPONÍVEIS use o comando: ajuda" ; tput sgr0
+tput setaf 2 ; tput setab 1 ; tput bold ; echo "Proxy Squid Instalado e rodando nas portas: 80 e 3128" ; tput sgr0
+tput setaf 2 ; tput setab 1 ; tput bold ; echo "OpenSSH rodando nas portas 22 e 443" ; tput sgr0
+tput setaf 2 ; tput setab 1 ; tput bold ; echo "Para ver os COMANDOS DISPONÍVEIS use o comando: ajuda" ; tput sgr0
 echo ""
 if [[ "$optiondb" = '2' ]]; then
 	awk -F : '$3 >= 500 { print $1 " 1" }' /etc/passwd | grep -v '^nobody' > /root/usuarios.db
