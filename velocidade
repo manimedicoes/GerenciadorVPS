@@ -1,0 +1,90 @@
+#! /bin/bash
+# -----------------------------------------------------------------------
+# Script: Internet Speed (Ispeed)
+# Author: Tiago Oliveira Weber
+# E-mail: towalker@gmail.com                 
+# 
+# Description: This script measures the internet download speed based on
+# the download speed mean of wget while downloading a big file from a 
+# server. 
+# The file the script is going to try to download can be changed by the 
+# user in the "link" variable.
+# -----------------------------------------------------------------------
+
+# Define links
+link=ftp://ftp.slackware-brasil.com.br/slackware-12.0-iso/slackware-12.0-install-d1.iso
+
+# Start to download a file
+wget -O /tmp/tempfile -o /tmp/ispeed.log -b $link;
+echo -e "\n Aguarde alguns segundos enquanto a velocidade da sua VPS está sendo medida"
+# Reads values from the log
+sleep 20
+awk '$5 ~ ".........." {print $8}' /tmp/ispeed.log > /tmp/ispeed2.log
+tail -10 /tmp/ispeed2.log > /tmp/ispeed3.log
+cut -f 1 -d "K" -s /tmp/ispeed3.log > /tmp/ispeed4.log 
+
+# Put values into variables
+count=1; 
+while read line; do
+   eval var$count=$line
+       count=`expr $count + 1`;
+done   < /tmp/ispeed4.log; 
+
+# Round values
+
+vare1=`echo $var1|awk '{print int($1+0.5)}'`
+vare2=`echo $var2|awk '{print int($1+0.5)}'`
+vare3=`echo $var3|awk '{print int($1+0.5)}'`
+vare4=`echo $var4|awk '{print int($1+0.5)}'`
+vare5=`echo $var5|awk '{print int($1+0.5)}'`
+vare6=`echo $var6|awk '{print int($1+0.5)}'`
+vare7=`echo $var7|awk '{print int($1+0.5)}'`
+vare8=`echo $var8|awk '{print int($1+0.5)}'`
+vare9=`echo $var9|awk '{print int($1+0.5)}'`
+vare10=`echo $var10|awk '{print int($1+0.5)}'`
+
+
+# calculate the mean
+eval sum=`expr $vare1 + $vare2 + $vare3 + $vare4 + $vare5 + $vare6 + $vare7 + $vare8 + $vare9 + $vare10`;
+
+eval mean_kbytes=`expr $sum / 10`;
+eval mean_kbits=`expr $mean_kbytes \* 8`;
+
+
+# Display Results
+clear
+echo    "                     Resultados Encontrados                       "
+echo -e "_______________________________________________________________"
+echo -e " A Velocidade de download está entre: $mean_kbytes Kbytes/s e $mean_kbits Kbits/s \n \n";
+
+# Comparisons
+mp3_size_kbytes=5000
+videoclip_size_kbytes=35000
+movie_size_kbytes=800000
+cdrom_size_kbytes=737000
+dvd_size_kbytes=4700000
+
+eval time_mp3_min=`expr $mp3_size_kbytes / $mean_kbytes / 60`
+eval time_videoclip_min=`expr $videoclip_size_kbytes / $mean_kbytes / 60`
+eval time_movie_min=`expr $movie_size_kbytes / $mean_kbytes / 60`
+eval time_cdrom_min=`expr $cdrom_size_kbytes / $mean_kbytes / 60`
+eval time_dvd_min=`expr $dvd_size_kbytes / $mean_kbytes / 60`
+
+# Display Comparisons
+
+echo -e "                Tabela de referência: tempo de download                     "
+echo -e "_______________________________________________________________"
+echo -e "  Tipo \t \t Tamanho (Kb) \t \t Tempo (minutos)"
+echo -e "  Musica (mp3) \t $mp3_size_kbytes \t \t \t $time_mp3_min"
+echo -e "  Videoclip \t $videoclip_size_kbytes \t \t \t $time_videoclip_min"
+echo -e "  Filme \t $movie_size_kbytes \t \t $time_movie_min"
+echo -e "  Cd-Rom \t $cdrom_size_kbytes \t \t $time_cdrom_min"
+echo -e "  DVD \t \t $dvd_size_kbytes \t \t $time_dvd_min" 
+
+# Finish the temporary activities
+killall -9 wget
+rm /tmp/ispeed.log
+rm /tmp/ispeed2.log
+rm /tmp/ispeed3.log
+rm /tmp/ispeed4.log
+rm /tmp/tempfile
