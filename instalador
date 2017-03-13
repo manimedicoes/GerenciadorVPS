@@ -38,7 +38,7 @@ echo ""
 tput setaf 4 ; tput setab 7 ; tput bold ; echo "" ; echo "Aguarde a configuração automática" ; echo "" ; tput sgr0
 sleep 3
 apt-get update -y
-rm /bin/criarusuario /bin/expcleaner /bin/sshlimiter /bin/addhost /bin/listar /bin/sshmonitor /bin/ajuda  /bin/detalhes /bin/delhost /bin/criar /bin/apagar /bin/mudardata /bin/limitador /bin/limpar /bin/monitor /bin/mudarsenha /bin/velocimetro.py /bin/velocimetro /bin/velocimetro-cgi > /dev/null
+rm /bin/apagar /bin/criar /bin/delhost /bin/addhost /bin/detalhes /bin/limitador /bin/limitar /bin/limpar /bin/monitor /bin/monitorar /bin/mudardata /bin/mudarlimite /bin/mudarsenha /bin/velocidade /bin/velocimetro /bin/velocimetro.py > /dev/null
 rm /root/ExpCleaner.sh /root/CriarUsuario.sh /root/sshlimiter.sh > /dev/null
 apt-get install squid3 bc screen nano unzip dos2unix wget -y
 killall apache2
