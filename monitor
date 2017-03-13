@@ -3,7 +3,7 @@
 while true ; do
 clear
 echo "-----------------------------------------------"
-tput setaf 2 ; tput setab 7 ; echo "              Usuários    |    Conectados               " ; tput sgr0
+tput setaf 4 ; tput setab 7 ; echo "              Usuários    |    Conectados               " ; tput sgr0
 echo "-----------------------------------------------"
 
 
