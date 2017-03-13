@@ -36,7 +36,7 @@ echo ""
 tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "Aguarde a configuração automática" ; echo "" ; tput sgr0
 sleep 3
 apt-get update -y
-rm /bin/criarusuario /bin/expcleaner /bin/sshlimiter /bin/addhost /bin/listar /bin/sshmonitor /bin/ajuda  /bin/detalhes /bin/delhost /bin/criar /bin/apagar /bin/mudardata /bin/limitador /bin/limpar /bin/monitor /bin/mudarsenha /bin/velocimetro /bin/velocimetro-cgi > /dev/null
+rm /bin/criarusuario /bin/expcleaner /bin/sshlimiter /bin/addhost /bin/listar /bin/sshmonitor /bin/ajuda  /bin/detalhes /bin/delhost /bin/criar /bin/apagar /bin/mudardata /bin/limitador /bin/limpar /bin/monitor /bin/mudarsenha /bin/velocimetro.py /bin/velocimetro /bin/velocimetro-cgi > /dev/null
 rm /root/ExpCleaner.sh /root/CriarUsuario.sh /root/sshlimiter.sh > /dev/null
 apt-get install squid3 bc screen nano unzip dos2unix wget -y
 killall apache2
@@ -157,8 +157,8 @@ then
 	chmod +x /bin/payloads
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro -O /bin/velocimetro
 	chmod +x /bin/velocimetro
-	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro-cgi -O /bin/velocimetro-cgi
-	chmod +x /bin/velocimetro-cgi
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro.py -O /bin/velocimetro.py
+	chmod +x /bin/velocimetro.py
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/ajuda -O /bin/ajuda
 	chmod +x /bin/ajuda
 	if [ ! -f "/etc/init.d/squid3" ]
