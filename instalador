@@ -74,14 +74,16 @@ then
 	chmod +x /bin/addhost
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/criar -O /bin/criar
 	chmod +x /bin/criar
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/criarusuario -O /bin/criarusuario
+	chmod +x /bin/criarusuario
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/detalhes -O /bin/detalhes
 	chmod +x /bin/detalhes
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/mudardata -O /bin/mudardata
 	chmod +x /bin/mudardata
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/limitador -O /bin/limitador
 	chmod +x /bin/limitador
-	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/limitar -O /bin/limitar
-	chmod +x /bin/limitar
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/sshlimiter -O /bin/sshlimiter
+	chmod +x /bin/sshlimiter
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/limpar -O /bin/limpar
 	chmod +x /bin/limpar
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/monitor -O /bin/monitor
@@ -149,14 +151,16 @@ then
 	chmod +x /bin/addhost
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/criar -O /bin/criar
 	chmod +x /bin/criar
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/criarusuario -O /bin/criarusuario
+	chmod +x /bin/criarusuario
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/detalhes -O /bin/detalhes
 	chmod +x /bin/detalhes
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/mudardata -O /bin/mudardata
 	chmod +x /bin/mudardata
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/limitador -O /bin/limitador
 	chmod +x /bin/limitador
-	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/limitar -O /bin/limitar
-	chmod +x /bin/limitar
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/sshlimiter -O /bin/sshlimiter
+	chmod +x /bin/sshlimiter
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/limpar -O /bin/limpar
 	chmod +x /bin/limpar
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/monitor -O /bin/monitor
@@ -171,16 +175,16 @@ then
 	chmod +x /bin/delhost
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/apagar -O /bin/apagar
 	chmod +x /bin/apagar
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/apps -O /bin/apps
+	chmod +x /bin/apps
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/payloads -O /bin/payloads
+	chmod +x /bin/payloads
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocidade -O /bin/velocidade
 	chmod +x /bin/velocidade
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro -O /bin/velocimetro
 	chmod +x /bin/velocimetro
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro.py -O /bin/velocimetro.py
 	chmod +x /bin/velocimetro.py
-	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/apps -O /bin/apps
-	chmod +x /bin/apps
-	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/payloads -O /bin/payloads
-	chmod +x /bin/payloads
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/ajuda -O /bin/ajuda
 	chmod +x /bin/ajuda
 	if [ ! -f "/etc/init.d/squid3" ]
