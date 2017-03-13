@@ -197,9 +197,10 @@ then
 	fi
 fi
 echo ""
-tput setaf 2 ; tput setab 1 ; tput bold ; echo "Proxy Squid Instalado e rodando nas portas: 80 e 3128" ; tput sgr0
-tput setaf 2 ; tput setab 1 ; tput bold ; echo "OpenSSH rodando nas portas 22 e 443" ; tput sgr0
-tput setaf 2 ; tput setab 1 ; tput bold ; echo "Para ver os COMANDOS DISPONÍVEIS use o comando: ajuda" ; tput sgr0
+tput setaf 2 ; tput setab 4 ; tput bold ; echo "Proxy Squid Instalado e rodando nas portas: 80 e 3128" ; tput sgr0
+tput setaf 2 ; tput setab 4 ; tput bold ; echo "OpenSSH rodando nas portas 22 e 443" ; tput sgr0
+tput setaf 2 ; tput setab 4 ; tput bold ; echo "No Virtual Master dê um 'reboot' para funcionar" ; tput sgr0
+tput setaf 2 ; tput setab 4 ; tput bold ; echo "Para ver os COMANDOS DISPONÍVEIS dê o comando: ajuda" ; tput sgr0
 echo ""
 if [[ "$optiondb" = '2' ]]; then
 	awk -F : '$3 >= 500 { print $1 " 1" }' /etc/passwd | grep -v '^nobody' > /root/usuarios.db
