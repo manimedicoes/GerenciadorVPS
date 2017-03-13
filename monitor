@@ -1,10 +1,10 @@
-#/bin/bash
+#!/bin/bash 
 #BY https://telegram.me/NetHttpInjectorGratis
 while true ; do
 clear
-echo "--------------------------------------------"
-tput setaf 4 ; tput setab 7 ; echo "              Usuários    |    Conectados               " ; tput sgr0
-echo "--------------------------------------------"
+echo "-----------------------------------------------"
+tput setaf 2 ; tput setab 7 ; echo "              Usuários    |    Conectados               " ; tput sgr0
+echo "-----------------------------------------------"
 
 
         for usur in `awk -F : '$3 > 900 { print $1 }' /etc/passwd |grep -v "nobody" |grep -vi polkitd |grep -vi systemd-[a-z] |grep -vi systemd-[0-9]`; do
@@ -13,7 +13,7 @@ echo "--------------------------------------------"
 
 tput setaf 3 ;
 echo -e "              $sshs\t         $nssh " ; tput sgr0
-echo "--------------------------------------------"
+echo "-----------------------------------------------"
 done
 sleep 8
 done
