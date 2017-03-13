@@ -6,7 +6,7 @@ tput setaf 2 ; tput bold ; printf '%s' "PORTA SSH: " ; tput setaf 7 ; printf '%s
 tput setaf 2 ; tput bold ; printf '%s' "USUÁRIO: " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Usuário criado" ; echo ""
 tput setaf 2 ; tput bold ; printf '%s' "SENHA: " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Senha do usuário criado" ; echo ""
 tput setaf 2 ; tput bold ; printf '%s' "PROXY REMOTO: " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "IP_DO_VPS:Porta_operadora" ; tput setaf 1 ; echo "Cada operadora usa uma porta de proxy diferente" ; echo ""
-tput setaf 2 ; tput bold ; printf '%s' "PAYLOAD | TEXTO DE CONEXÃO " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "para cada operadora tem uma diferente" ; echo ""
+tput setaf 2 ; tput bold ; printf '%s' "PAYLOAD | TEXTO DE CONEXÃO " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Cada operadora tem uma diferente, veja elas com o comando 'payloads'" ; echo ""
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%30s%s%-10s\n' "Portas das operadoras:" ; tput sgr0 ; echo ""
 tput setaf 2 ; tput bold ; printf '%s' "Claro: " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Porta do proxy: 80, 8080, 8799" ; echo ""
 tput setaf 2 ; tput bold ; printf '%s' "vivo: " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Porta do proxy: 80" ; echo ""
