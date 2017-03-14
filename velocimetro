@@ -4,6 +4,6 @@
 sleep 2
 clear
 echo ""
-echo "-Aguarde, mdindo a velocidade do seu VPS-"
+echo "-Aguarde enquanto a velocidade do seu VPS está sendo medido-"
 speedtest-cli --share
 echo ""
