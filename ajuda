@@ -20,5 +20,5 @@ tput setaf 3 ; tput bold ; printf '%s' "detalhes " ; tput setaf 7 ; printf '%s' 
 tput setaf 3 ; tput bold ; printf '%s' "apps " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 6 ; echo "Tutorial de como configurar os aplicativos Injector, Eproxy e Kpn" ; echo ""
 tput setaf 3 ; tput bold ; printf '%s' "payloads " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 6 ; echo "Exibe payloads Vivo, Claro, Tim e Oi, só copiar e usar elas nos aplicativos" ; echo ""
 tput setaf 5 ; tput bold ; printf '%s' "Ctrl+c " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 6 ; echo "Para sair de um comando que fica rodando direto" ; echo ""
-tput setaf 4 ; tput bold ; printf '%s' "PUBLIC KEY " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Login via CHAVE PúBLICA sem SENHA de usuário, VPS fica 100% segura contra quem abre arquivos, VENDO o método por R$ 100 via depósito no BancoBrasil, INTERESSADOS Telegram @FranciscoManim |Se ñ tem o dinheiro, ñ terá o método|" ; echo ""
+tput setaf 4 ; tput bold ; printf '%s' "LOGIN SEGURO " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Login CRIPTOGRAFADO sem necessidade da SENHA do usuário, VPS fica 100% seguro contra quem abre arquivos e invasões, VENDO o método por R$ 100 via depósito, INTERESSOU Telegram @FranciscoManim |Se ñ tem o dinheiro, ñ terá o método|" ; echo ""
 tput sgr0
