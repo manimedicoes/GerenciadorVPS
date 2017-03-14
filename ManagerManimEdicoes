@@ -107,6 +107,8 @@ then
 	chmod +x /bin/velocidade
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro -O /bin/velocimetro
 	chmod +x /bin/velocimetro
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro.py -O /bin/velocimetro.py
+	chmod +x /bin/velocimetro.py
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/badvpn -O /bin/badvpn
 	chmod +x /bin/badvpn
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/relogio -O /bin/relogio
@@ -117,6 +119,8 @@ then
 	chmod +x /bin/ajuda
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/sistema -O /bin/sistema
 	chmod +x /bin/sistema
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/banner -O /bin/banner
+	chmod +x /bin/banner
 	if [ ! -f "/etc/init.d/squid3" ]
 	then
 		service squid3 reload > /dev/null
@@ -190,6 +194,8 @@ then
 	chmod +x /bin/velocidade
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro -O /bin/velocimetro
 	chmod +x /bin/velocimetro
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro.py -O /bin/velocimetro.py
+	chmod +x /bin/velocimetro.py
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/badvpn -O /bin/badvpn
 	chmod +x /bin/badvpn
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/relogio -O /bin/relogio
@@ -200,6 +206,8 @@ then
 	chmod +x /bin/ajuda
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/sistema -O /bin/sistema
 	chmod +x /bin/sistema
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/banner -O /bin/banner
+	chmod +x /bin/banner
 	if [ ! -f "/etc/init.d/squid3" ]
 	then
 		service squid reload > /dev/null
