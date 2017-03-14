@@ -1,0 +1,2 @@
+#!/bin/bash
+nano /var/log/squid3/access.log
