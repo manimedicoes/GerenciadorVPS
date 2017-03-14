@@ -6,7 +6,7 @@ echo "● Instalar e configurar o proxy squid nas portas 80 e 3128" ; echo "  se
 echo "● Configurar o OpenSSH para rodar nas portas 22 e 443"
 echo "● Configurar 'log de acesso' de usuário 'Debian: squid3, Ubuntu: squid'" ; echo " Comando: 'nano /var/log/squid3/access.log'"
 echo "● Bloqueio médio de TORRENT e SITES de invasões Sniffer"
-echo "● Liberação média: Youtube HD, NetFlix BR e Redes Sociais"
+echo "● Liberação média: Youtube HD, NetFlix BR, VideoChamada e Redes Sociais"
 echo "● Comando de configuração dos apps de net grátis" ; echo " Mostrar payloads das operadoras, funcionando"
 echo "● Instalar vários comandos para o gerenciamento da VPS" ; tput sgr0
 echo ""
