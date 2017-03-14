@@ -10,7 +10,7 @@ link=ftp://ftp.slackware-brasil.com.br/slackware-12.0-iso/slackware-12.0-install
 
 # Start to download a file
 wget -O /tmp/tempfile -o /tmp/ispeed.log -b $link;
-echo -e "\n Aguarde alguns segundos enquanto a velocidade da sua VPS está sendo medida"
+echo -e "\n Aguarde alguns segundos enquanto a taxa de download está sendo medida"
 # Reads values from the log
 sleep 10
 awk '$5 ~ ".........." {print $8}' /tmp/ispeed.log > /tmp/ispeed2.log
@@ -68,12 +68,12 @@ eval time_dvd_min=`expr $dvd_size_kbytes / $mean_kbytes / 60`
 
 echo -e "                Tabela de referência: tempo de download                     "
 echo -e "_______________________________________________________________"
-echo -e "  Tipo \t \t Tamanho (Kb) \t \t Tempo (minutos)"
+echo -e "  Tipo \t \t Tamanho(Kb) \t \t Tempo(minutos)"
 echo -e "  Musica (mp3) \t $mp3_size_kbytes \t \t \t $time_mp3_min"
 echo -e "  Videoclip \t $videoclip_size_kbytes \t \t \t $time_videoclip_min"
 echo -e "  Filme \t $movie_size_kbytes \t \t $time_movie_min"
 echo -e "  Cd-Rom \t $cdrom_size_kbytes \t \t $time_cdrom_min"
-echo -e "  DVD \t \t $dvd_size_kbytes \t \t $time_dvd_min" 
+echo -e "  DVD-Rom \t \t $dvd_size_kbytes \t \t $time_dvd_min" 
 
 # Finish the temporary activities
 killall -9 wget
