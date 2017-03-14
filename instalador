@@ -1,18 +1,17 @@
 #!/bin/bash
 # (1=vermelho; 2=verde; 3=amarelo; 4=azul; 5=roxo; 6=azul claro; 7=branco; 9=limpa)
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "Gerenciador de VPS editada por ManimEdicoes Telegram @FranciscoManim" ; tput sgr0
-tput setaf 2 ; tput bold ; echo "" ; echo "Este script irá instalar no Debian ou Ubuntu:" ; echo ""
-echo "● Instalar e configurar o proxy squid nas portas 80 e 3128" ; echo "  para permitir conexões SSH para este servidor"
+tput setaf 2 ; tput bold ; echo "" ; echo "Debian ou Ubuntu (32|64 bits), Este script irá:" ; echo ""
+echo "● Instalar e configurar o proxy squid nas portas 80 e 3128" ; echo "  sempre autolimpar o 'squid cache' mantendo-o rápido"
 echo "● Configurar o OpenSSH para rodar nas portas 22 e 443"
-echo "● Configurar o squid para AutoLimpar o cache para" ; echo "  manter o squid sempre rápido"
-echo "● Bloquear TORRENT e SITES de invasões Sniffer"
-echo "● Comandos para configurar os apps de net grátis" ; echo "  e payloads funcionando para todas as operadoras"
-echo "● Configurar log de acesso de usuário 'Debian: squid3, Ubuntu: squid'" ; echo " Comando: 'nano /var/log/squid3/access.log'."
-echo "● Instalar um conjunto de comandos para o gerenciamento da VPS" ; tput sgr0
+echo "● Configurar 'log de acesso' de usuário 'Debian: squid3, Ubuntu: squid'" ; echo " Comando: 'nano /var/log/squid3/access.log'"
+echo "● Bloqueio médio de TORRENT e SITES de invasões Sniffer"
+echo "● Comando de configuração dos apps de net grátis" ; echo " Mostrar payloads das operadoras, funcionando"
+echo "● Instalar vários comandos para o gerenciamento da VPS" ; tput sgr0
 echo ""
 tput setaf 6 ; tput bold ; read -n 1 -s -p "Aperte qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
 IP=$(wget -qO- ipv4.icanhazip.com)
-read -p "Para continuar confirme se este é o IP do seu servidor: " -e -i $IP ipdovps
+read -p "Confirme se este IP é do seu servidor: " -e -i $IP ipdovps
 if [ -z "$ipdovps" ]
 then
 	tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "" ; echo " IP deste servidor está errado. Tente novamente. " ; echo "" ; echo "" ; tput sgr0
@@ -21,24 +20,24 @@ fi
 if [ -f "/root/usuarios.db" ]
 then
 tput setaf 5 ; tput bold ;	echo ""
-	echo "Uma base de dados de usuários ('usuarios.db') foi encontrada!"
-	echo "Deseja mantê-la (preservando o limite de conexões dos usuários)"
-	echo "ou criar uma nova base de dados?"
+	echo "Uma Base de Dados de Usuários ('usuarios.db') foi encontrada!"
+	echo "Deseja mantê-la (mantendo o limite de conexões de usuários nesta base de dados)"
+	echo "ou criar uma nova base de dados do ZERO?"
 	tput setaf 2 ; tput bold ;	echo ""
-	echo "[1] Manter Base de Dados Atual, ela não sofrerá mudanças."
-	echo "[2] Criar uma Nova Base de Dados, apagará tudo da antiga."
+	echo "[1] Manter 'Base de Dados' Atual, ela não sofrerá mudanças."
+	echo "[2] Criar uma Nova 'Base de Dados', refaz o arquivo do zero."
 	echo "" ; tput sgr0
 	read -p "Opção?: " -e -i 1 optiondb
 else
 	awk -F : '$3 >= 500 { print $1 " 1" }' /etc/passwd | grep -v '^nobody' > /root/usuarios.db
 fi
 echo ""
-read -p "Ativar a compressão SSH (há ganho de performance em servidores acessados via internet)? [s/n]) " -e -i n sshcompression
+read -p "Ativar a 'compressão SSH' (pode usar mais memória RAM)? [s/n]) " -e -i n sshcompression
 echo ""
-tput setaf 4 ; tput setab 7 ; tput bold ; echo "" ; echo "Aguarde a configuração automática" ; echo "" ; tput sgr0
+tput setaf 4 ; tput setab 7 ; tput bold ; echo "" ; echo "Aguarde a configuração automática do seu VPS" ; echo "" ; tput sgr0
 sleep 3
 apt-get update -y
-rm /bin/apagar /bin/criar /bin/delhost /bin/addhost /bin/detalhes /bin/limitador /bin/limitar /bin/limpar /bin/monitor /bin/monitorar /bin/mudardata /bin/mudarlimite /bin/mudarsenha /bin/velocidade /bin/velocimetro /bin/velocimetro.py > /dev/null
+rm /bin/apagar /bin/criar /bin/criarusuario /bin/ajuda /bin/apps /bin/payloads /bin/delhost /bin/addhost /bin/detalhes /bin/limitador /bin/sshlimiter /bin/limpar /bin/monitor /bin/monitorar /bin/mudardata /bin/mudarlimite /bin/mudarsenha /bin/velocidade /bin/velocimetro /bin/velocimetro.py > /dev/null
 rm /root/ExpCleaner.sh /root/CriarUsuario.sh /root/sshlimiter.sh > /dev/null
 apt-get install squid3 bc screen nano unzip dos2unix wget -y
 killall apache2
@@ -70,6 +69,8 @@ then
 	echo "PermitTunnel yes" >> /etc/ssh/sshd_config
 	grep -v "^#UseDns yes" /etc/ssh/sshd_config > /tmp/ssh && mv /tmp/ssh /etc/ssh/sshd_config
 	echo "#UseDns yes" >> /etc/ssh/sshd_config
+	grep -v "^Banner /etc/banner" /etc/ssh/sshd_config > /tmp/ssh && mv /tmp/ssh /etc/ssh/sshd_config
+	echo "Banner /etc/banner" >> /etc/ssh/sshd_config
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/addhost -O /bin/addhost
 	chmod +x /bin/addhost
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/criar -O /bin/criar
@@ -147,6 +148,8 @@ then
 	echo "PermitTunnel yes" >> /etc/ssh/sshd_config
 	grep -v "^#UseDns yes" /etc/ssh/sshd_config > /tmp/ssh && mv /tmp/ssh /etc/ssh/sshd_config
 	echo "#UseDns yes" >> /etc/ssh/sshd_config
+	grep -v "^Banner /etc/banner" /etc/ssh/sshd_config > /tmp/ssh && mv /tmp/ssh /etc/ssh/sshd_config
+	echo "Banner /etc/banner" >> /etc/ssh/sshd_config
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/addhost -O /bin/addhost
 	chmod +x /bin/addhost
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/criar -O /bin/criar
@@ -204,6 +207,7 @@ echo ""
 tput setaf 2 ; tput setab 4 ; tput bold ; echo "Proxy Squid Instalado e rodando nas portas: 80 e 3128" ; tput sgr0
 tput setaf 2 ; tput setab 4 ; tput bold ; echo "OpenSSH rodando nas portas 22 e 443" ; tput sgr0
 tput setaf 2 ; tput setab 4 ; tput bold ; echo "No Virtual Master dê um 'reboot' para funcionar" ; tput sgr0
+tput setaf 2 ; tput setab 4 ; tput bold ; echo "Banner configurado, edite-o comando: 'nano /etc/banner'" ; tput sgr0
 tput setaf 2 ; tput setab 4 ; tput bold ; echo "Para ver os COMANDOS DISPONÍVEIS dê o comando: ajuda" ; tput sgr0
 echo ""
 if [[ "$optiondb" = '2' ]]; then
