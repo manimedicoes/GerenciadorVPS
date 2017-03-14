@@ -1,5 +1,4 @@
 #!/bin/bash
-#(1=vermelho; 2=verde; 3=amarelo; 4=azul; 5=roxo; 6=azul claro; 7=branco; 9=limpa)
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%30s%s%-10s\n' "COMANDOS DISPONÍVEIS:" ; tput sgr0 ; echo ""
 tput setaf 2 ; tput bold ; printf '%s' "criarusuario " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Cria usuário com data de expiração e limite, mais ñ pronto para login por Chave Pública"
 tput setaf 2 ; tput bold ; printf '%s' "apagar " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Apaga usuário, se tiver logado, use o comando: 'kill pid', onde 'pid' é um nº de processo do usuário" ;
@@ -21,5 +20,6 @@ tput setaf 5 ; tput bold ; printf '%s' "badvpn " ; tput setaf 7 ; printf '%s' "-
 tput setaf 3 ; tput bold ; printf '%s' "criar " ; tput setaf 1 ; printf '%s' "- " ; tput setaf 7 ; echo "Cria usuário com data de expiração e pronto para LOGIN SEGURO, consulte comando 'apps'"
 tput setaf 3 ; tput bold ; printf '%s' "detalhes " ; tput setaf 1 ; printf '%s' "- " ; tput setaf 7 ; echo "Mostra nome, senha, data e logins dos criados com comando: 'criar'"
 tput setaf 2 ; tput bold ; printf '%s' "apps " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Como configurar os aplicativos Injector, Eproxy e Kpn"
-tput setaf 2 ; tput bold ; printf '%s' "log " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Entra no arquivoe mostra os sites visitados pelos usuários" ; echo ""
+tput setaf 2 ; tput bold ; printf '%s' "sistema " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Exibe várias informações do VPS, memória, Processador, etc" ; echo ""
+tput setaf 2 ; tput bold ; printf '%s' "log " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Mostra os sites visitados pelos usuários e o IP de quem visitou, 'Ctrl+z' para sair" ; echo ""
 tput sgr0
