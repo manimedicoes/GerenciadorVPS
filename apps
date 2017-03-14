@@ -9,5 +9,5 @@ tput setaf 2 ; tput bold ; printf '%s' "Claro: " ; tput setaf 7 ; printf '%s' "-
 tput setaf 2 ; tput bold ; printf '%s' "vivo: " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Porta do proxy: 80" ; echo "[method] [host_port]@sdp.vivo.com.br [protocol]@NetGratisMobileE[crlf][crlf]" ; echo ""
 tput setaf 2 ; tput bold ; printf '%s' "Tim: " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Porta do proxy: 80"; echo "[netData][crlf][split]GET http://tim.anti-theft.kaspersky.com/[protocol][crlf][crlf]" ; echo ""
 tput setaf 2 ; tput bold ; printf '%s' "Oi: " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Porta do proxy: 3128" ; echo "[method] [host_port]@www.rdio.com/rewrite.pandora.com [protocol][crlf][crlf]" ; echo ""
-tput setaf 4 ; tput bold ; printf '%s' "LOGIN SEGURO " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 5 ; echo "Login sem a SENHA de USUÁRIO, comando 'ajuda' para mais informações" ; echo ""
+tput setaf 7 ; tput bold ; printf '%s' "LOGIN SEGURO " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 5 ; echo "Login CRIPTOGRAFADO sem necessidade da SENHA do usuário, VPS fica 100% seguro contra quem abre arquivos e invasões, VENDO o método por R$ 100 via depósito, INTERESSOU Telegram @FranciscoManim |Se ñ tem o dinheiro, ñ terá o método|" ; echo ""
 tput sgr0
