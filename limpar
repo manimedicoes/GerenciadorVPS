@@ -26,15 +26,12 @@ tput setaf 2 ; tput bold ; echo "	Removendo pacotes com problemas..." ; tput sgr
 apt-get -f remove -y 1>/dev/null 2>/dev/null # Remover pacotes com problemas
 #
 #Limpar o cache da memoria RAM
-tput setaf 7 ; tput setab 1 ; printf '  %-30s%s\n' "------------------------------------------------------------------" ; echo "" ; tput sgr0
-echo ""
+tput setaf 7 ; tput setab 1 ; printf '  %-30s%s\n' "Memória RAM atualmente usada" ; echo "" ; tput sgr0
 MEM1=`free|awk '/Mem:/ {print int(100*$3/$2)}'`
 free -m 
 echo ""
 echo "Memória RAM Usada antes de fazer a limpeza:" $MEM1% 
 echo ""
-tput setaf 7 ; tput setab 1 ; printf '  %-30s%s\n' "------------------------------------------------------------------" ; echo "" ; tput sgr0
-echo " "
 echo "LIMPANDO MEMORIA RAM..."
 sleep 3
 sync 
@@ -46,11 +43,9 @@ sync && sysctl -w vm.drop_caches=3 1>/dev/null 2>/dev/null
 sysctl -w vm.drop_caches=0 1>/dev/null 2>/dev/null
 swapoff -a
 swapon -a
-tput setaf 7 ; tput setab 1 ; printf '  %-30s%s\n' "------------------------------------------------------------------" ; echo "" ; tput sgr0
+tput setaf 7 ; tput setab 1 ; printf '  %-30s%s\n' "Memória RAM após a limpeza" ; echo "" ; tput sgr0
 echo ""
 MEM2=`free|awk '/Mem:/ {print int(100*$3/$2)}'`
 free -m 
 echo ""
 echo "Uso de memória RAM após a limpeza:" $MEM2% "Economia de: " `expr $MEM1 - $MEM2`"%"
-
-tput setaf 7 ; tput setab 1 ; printf '  %-30s%s\n' "------------------------------------------------------------------" ; echo "" ; tput sgr0
