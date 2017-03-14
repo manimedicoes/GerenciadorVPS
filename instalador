@@ -2,13 +2,14 @@
 # (1=vermelho; 2=verde; 3=amarelo; 4=azul; 5=roxo; 6=azul claro; 7=branco; 9=limpa)
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "Gerenciador de VPS editada por ManimEdicoes Telegram @FranciscoManim" ; tput sgr0
 tput setaf 2 ; tput bold ; echo "" ; echo "Debian ou Ubuntu (32|64 bits), Este script irá:" ; echo ""
-echo "● Instalar e configurar o proxy squid nas portas 80 e 3128" ; echo "  sempre autolimpar o 'squid cache' mantendo-o rápido"
+echo "● Instalar e configurar o proxy squid nas portas 80 e 3128"
 echo "● Configurar o OpenSSH para rodar nas portas 22 e 443"
-echo "● Configurar 'log de acesso' de usuário 'Debian: squid3, Ubuntu: squid'" ; echo " Comando: 'nano /var/log/squid3/access.log'"
-echo "● Bloqueio médio de TORRENT e SITES de invasões Sniffer"
-echo "● Liberação média: Youtube HD, NetFlix BR, VideoChamada e Redes Sociais"
-echo "● Comando de configuração dos apps de net grátis" ; echo " Mostrar payloads das operadoras, funcionando"
-echo "● Instalar vários comandos para o gerenciamento da VPS" ; tput sgr0
+echo "● Configurar o squid para autolimpar o cache mantendo-o rápido"
+echo "● Configurar 'log de acesso' de sites visitados pelos usuários"
+echo "● Bloqueio médio: TORRENT e SITES de invasões Sniffer"
+echo "● Liberar: Youtube HD, NetFlix BR, Áudio e VideoChamada em Redes Sociais"
+echo "● Instalar Banner e comando que mostra PayLoads e como configurar os Apps"
+echo "● Instalar vários comandos para o gerenciamento do VPS" ; tput sgr0
 echo ""
 tput setaf 6 ; tput bold ; read -n 1 -s -p "Aperte qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
 IP=$(wget -qO- ipv4.icanhazip.com)
@@ -24,7 +25,7 @@ tput setaf 5 ; tput bold ;	echo ""
 	echo "Uma Base de Dados de Usuários ('usuarios.db') foi encontrada!"
 	echo "Deseja mantê-la (mantendo o limite de conexões de usuários nesta base de dados)"
 	echo "ou criar uma nova base de dados do ZERO?"
-	tput setaf 2 ; tput bold ;	echo ""
+	tput setaf 6 ; tput bold ;	echo ""
 	echo "[1] Manter 'Base de Dados' Atual, ela não sofrerá mudanças."
 	echo "[2] Criar uma Nova 'Base de Dados', refaz o arquivo do zero."
 	echo "" ; tput sgr0
@@ -35,7 +36,7 @@ fi
 echo ""
 read -p "Ativar a 'compressão SSH' (pode usar mais memória RAM)? [s/n]) " -e -i n sshcompression
 echo ""
-tput setaf 4 ; tput setab 1 ; tput bold ; echo "" ; echo "Aguarde a configuração automática do seu VPS" ; echo "" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "Aguarde a configuração automática do seu VPS" ; echo "" ; tput sgr0
 sleep 3
 apt-get update -y
 rm /bin/apagar /bin/criar /bin/criarusuario /bin/ajuda /bin/apps /bin/payloads /bin/delhost /bin/addhost /bin/detalhes /bin/limitador /bin/sshlimiter /bin/limpar /bin/monitor /bin/monitorar /bin/mudardata /bin/mudarlimite /bin/mudarsenha /bin/velocidade /bin/velocimetro /bin/velocimetro.py > /dev/null
@@ -82,8 +83,8 @@ then
 	chmod +x /bin/detalhes
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/mudardata -O /bin/mudardata
 	chmod +x /bin/mudardata
-	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/limitador -O /bin/limitador
-	chmod +x /bin/limitador
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/log -O /bin/log
+	chmod +x /bin/log
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/sshlimiter -O /bin/sshlimiter
 	chmod +x /bin/sshlimiter
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/limpar -O /bin/limpar
@@ -102,14 +103,18 @@ then
 	chmod +x /bin/apagar
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/apps -O /bin/apps
 	chmod +x /bin/apps
-	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/payloads -O /bin/payloads
-	chmod +x /bin/payloads
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocidade -O /bin/velocidade
 	chmod +x /bin/velocidade
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro -O /bin/velocimetro
 	chmod +x /bin/velocimetro
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro.py -O /bin/velocimetro.py
 	chmod +x /bin/velocimetro.py
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/badvpn -O /bin/badvpn
+	chmod +x /bin/badvpn
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/relogio -O /bin/relogio
+	chmod +x /bin/relogio
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/latencia -O /bin/latencia
+	chmod +x /bin/latencia
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/ajuda -O /bin/ajuda
 	chmod +x /bin/ajuda
 	if [ ! -f "/etc/init.d/squid3" ]
@@ -161,8 +166,8 @@ then
 	chmod +x /bin/detalhes
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/mudardata -O /bin/mudardata
 	chmod +x /bin/mudardata
-	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/limitador -O /bin/limitador
-	chmod +x /bin/limitador
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/log -O /bin/log
+	chmod +x /bin/log
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/sshlimiter -O /bin/sshlimiter
 	chmod +x /bin/sshlimiter
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/limpar -O /bin/limpar
@@ -181,14 +186,18 @@ then
 	chmod +x /bin/apagar
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/apps -O /bin/apps
 	chmod +x /bin/apps
-	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/payloads -O /bin/payloads
-	chmod +x /bin/payloads
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocidade -O /bin/velocidade
 	chmod +x /bin/velocidade
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro -O /bin/velocimetro
 	chmod +x /bin/velocimetro
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro.py -O /bin/velocimetro.py
 	chmod +x /bin/velocimetro.py
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/badvpn -O /bin/badvpn
+	chmod +x /bin/badvpn
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/relogio -O /bin/relogio
+	chmod +x /bin/relogio
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/latencia -O /bin/latencia
+	chmod +x /bin/latencia
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/ajuda -O /bin/ajuda
 	chmod +x /bin/ajuda
 	if [ ! -f "/etc/init.d/squid3" ]
@@ -208,8 +217,8 @@ echo ""
 tput setaf 7 ; tput setab 4 ; tput bold ; echo "Proxy Squid Instalado e rodando nas portas: 80 e 3128" ; tput sgr0
 tput setaf 7 ; tput setab 4 ; tput bold ; echo "OpenSSH rodando nas portas 22 e 443" ; tput sgr0
 tput setaf 7 ; tput setab 4 ; tput bold ; echo "No 'Virtual Master' dê o comando 'reboot' para funcionar" ; tput sgr0
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "Banner SSH configurado, edite-o comando: 'nano /etc/banner'" ; tput sgr0
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "Crie um usuario e use a vontade internet GRÁTIS" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo "Comando: 'nano /var/log/squid3/access.log' para ver o log de acesso" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo "Crie um usuario e use a vontade a internet GRÁTIS" ; tput sgr0
 tput setaf 7 ; tput setab 4 ; tput bold ; echo "Para ver os COMANDOS DISPONÍVEIS dê o comando: ajuda" ; tput sgr0
 echo ""
 if [[ "$optiondb" = '2' ]]; then
