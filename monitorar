@@ -4,8 +4,8 @@ database="/root/usuarios.db"
 echo $$ > /tmp/kids
 while true
 do
-tput setaf 5 ; tput setab 4 ; tput bold ; printf '%28s%s%-18s\n' "SSH Monitor"
-tput setaf 5 ; tput setab 4 ; printf '  %-30s%s\n' "Usuário" "Conexão/Limite " ; echo "" ; tput sgr0
+tput setaf 1 ; tput setab 4 ; tput bold ; printf '%28s%s%-18s\n' "SSH Monitor"
+tput setaf 1 ; tput setab 4 ; printf '  %-30s%s\n' "Usuário" "Conexão/Limite " ; echo "" ; tput sgr0
         while read usline
         do
                 user="$(echo $usline | cut -d' ' -f1)"
