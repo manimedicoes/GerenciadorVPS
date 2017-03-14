@@ -1,7 +1,6 @@
 #!/bin/bash
 #(1=vermelho; 2=verde; 3=amarelo; 4=azul; 5=roxo; 6=azul claro; 7=branco; 9=limpa)
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%30s%s%-10s\n' "COMANDOS DISPONÍVEIS:" ; tput sgr0 ; echo ""
-
 tput setaf 2 ; tput bold ; printf '%s' "criarusuario " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Cria usuário com data de expiração, mais ñ pronto para login por Chave Pública" ; echo ""
 tput setaf 2 ; tput bold ; printf '%s' "apagar " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Apaga usuário, se tiver logado, use o comando: 'kill pid', onde 'pid' é um nº de processo do usuário" ; echo ""
 tput setaf 2 ; tput bold ; printf '%s' "mudarsenha " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Muda a senha do usuário selecionado" ; echo ""
@@ -18,8 +17,8 @@ tput setaf 2 ; tput bold ; printf '%s' "velocimetro " ; tput setaf 7 ; printf '%
 tput setaf 2 ; tput bold ; printf '%s' "limpar " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Limpa a MEMÓRIA OCIOSA mantendo o VPS mais rápido, ñ abuse deste comando" ; echo ""
 tput setaf 3 ; tput bold ; printf '%s' "criar " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 2 ; echo "Cria usuário com data de expiração e pronto para login via CHAVE PÚBLICA" ; echo ""
 tput setaf 3 ; tput bold ; printf '%s' "detalhes " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 2 ; echo "Mostra nome, senha, expiração e logins dos criados com comando: 'criar'" ; echo ""
-tput setaf 3 ; tput bold ; printf '%s' "apps " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 2 ; echo "Tutorial de como configurar os aplicativos Injector, Eproxy e Kpn" ; echo ""
-tput setaf 3 ; tput bold ; printf '%s' "payloads " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 2 ; echo "Exibe payloads Vivo, Claro, Tim e Oi, só copiar e usar elas nos aplicativos" ; echo ""
-tput setaf 4 ; tput bold ; printf '%s' "Ctrl+c " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 2 ; echo "Para sair de um comando que fica rodando direto" ; echo ""
-tput setaf 4 ; tput bold ; printf '%s' "PUBLIC KEY " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 2 ; echo "Login via CHAVE PúBLICA sem SENHA de usuário, VPS fica 100% segura contra quem abre arquivos, VENDO o método por R$ 100 via depósito no BancoBrasil, INTERESSADOS Telegram @FranciscoManim |Se ñ tem o dinheiro, ñ terá o método|" ; echo ""
+tput setaf 3 ; tput bold ; printf '%s' "apps " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 6 ; echo "Tutorial de como configurar os aplicativos Injector, Eproxy e Kpn" ; echo ""
+tput setaf 3 ; tput bold ; printf '%s' "payloads " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 6 ; echo "Exibe payloads Vivo, Claro, Tim e Oi, só copiar e usar elas nos aplicativos" ; echo ""
+tput setaf 5 ; tput bold ; printf '%s' "Ctrl+c " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 6 ; echo "Para sair de um comando que fica rodando direto" ; echo ""
+tput setaf 4 ; tput bold ; printf '%s' "PUBLIC KEY " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Login via CHAVE PúBLICA sem SENHA de usuário, VPS fica 100% segura contra quem abre arquivos, VENDO o método por R$ 100 via depósito no BancoBrasil, INTERESSADOS Telegram @FranciscoManim |Se ñ tem o dinheiro, ñ terá o método|" ; echo ""
 tput sgr0
