@@ -5,17 +5,17 @@ then
 	tput setaf 3 ; tput bold ; echo ""
 	echo ""
 	echo "O BadVPN já foi instalado com sucesso."
-	echo "Para executar, dê o comando 'screen'"
+	echo "Para executar, dê o comando 'screen' aperte qqr tecla"
 	echo "E execute o comando:"
-	echo ""
 	echo "badudp"
 	echo ""
 	echo "E aperte juntos Ctrl+d para voltar ao Prompt."
+	echo "Voltar para o 'badudp' dê 'screen -r'"
 	echo "" ; tput sgr0
 	exit
 else
 tput setaf 2 ; tput bold ; echo ""
-echo "Este é um script que compila e instala automaticamente o programa"
+echo "Este é um script que instala automaticamente o programa"
 echo "BadVPN em servidores Debian e Ubuntu para ativar o encaminhamento UDP"
 echo "na Porta 7300, usado por aplicativos de internet grátis."
 echo "Permitindo assim a utilização do protocolo UDP para jogos online,"
@@ -53,13 +53,13 @@ if [[ "$resposta" = 's' ]]; then
 	clear
 	tput setaf 3 ; tput bold ; echo ""
 	echo ""
-	echo "BadVPN instalado com sucesso."
-	echo "Para usar, dê o comando 'screen'"
+	echo "O BadVPN já foi instalado com sucesso."
+	echo "Para executar, dê o comando 'screen' aperte qqr tecla"
 	echo "E execute o comando:"
-	echo ""
 	echo "badudp"
 	echo ""
-	echo "E aperte juntos Ctrl+d para voltar ao Prompt"
+	echo "E aperte juntos Ctrl+d para voltar ao Prompt."
+	echo "Voltar para o 'badudp' dê 'screen -r'"
 	echo "" ; tput sgr0
 	exit
 else 
