@@ -1,7 +1,7 @@
 #!/bin/bash
 #(1=vermelho; 2=verde; 3=amarelo; 4=azul; 5=roxo; 6=azul claro; 7=branco; 9=limpa)
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%30s%s%-10s\n' "COMANDOS DISPONÍVEIS:" ; tput sgr0 ; echo ""
-tput setaf 2 ; tput bold ; printf '%s' "criarusuario " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Cria usuário com data de expiração, mais ñ pronto para login por Chave Pública" ; echo ""
+tput setaf 2 ; tput bold ; printf '%s' "criarusuario " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Cria usuário com data de expiração e limite, mais ñ pronto para login por Chave Pública" ; echo ""
 tput setaf 2 ; tput bold ; printf '%s' "apagar " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Apaga usuário, se tiver logado, use o comando: 'kill pid', onde 'pid' é um nº de processo do usuário" ; echo ""
 tput setaf 2 ; tput bold ; printf '%s' "mudarsenha " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Muda a senha do usuário selecionado" ; echo ""
 tput setaf 2 ; tput bold ; printf '%s' "mudardata " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Mudar a data de expiração de um usuário" ; echo ""
