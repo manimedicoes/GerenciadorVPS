@@ -73,7 +73,7 @@ echo -e "  Musica (mp3) \t $mp3_size_kbytes \t \t \t $time_mp3_min"
 echo -e "  Videoclip \t $videoclip_size_kbytes \t \t \t $time_videoclip_min"
 echo -e "  Filme \t $movie_size_kbytes \t \t $time_movie_min"
 echo -e "  Cd-Rom \t $cdrom_size_kbytes \t \t $time_cdrom_min"
-echo -e "  DVD-Rom \t \t $dvd_size_kbytes \t \t $time_dvd_min" 
+echo -e "  DVD \t \t $dvd_size_kbytes \t \t $time_dvd_min" 
 
 # Finish the temporary activities
 killall -9 wget
