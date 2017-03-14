@@ -1,0 +1,225 @@
+#!/bin/bash
+# (1=vermelho; 2=verde; 3=amarelo; 4=azul; 5=roxo; 6=azul claro; 7=branco; 9=limpa)
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "Gerenciador de VPS editada por ManimEdicoes Telegram @FranciscoManim" ; tput sgr0
+tput setaf 2 ; tput bold ; echo "" ; echo "Debian ou Ubuntu (32|64 bits), Este script irá:" ; echo ""
+echo "● Instalar e configurar o proxy squid nas portas 80 e 3128" ; echo "  sempre autolimpar o 'squid cache' mantendo-o rápido"
+echo "● Configurar o OpenSSH para rodar nas portas 22 e 443"
+echo "● Configurar 'log de acesso' de usuário 'Debian: squid3, Ubuntu: squid'" ; echo " Comando: 'nano /var/log/squid3/access.log'"
+echo "● Bloqueio médio de TORRENT e SITES de invasões Sniffer"
+echo "● Liberação média: Youtube HD, NetFlix BR e Redes Sociais"
+echo "● Comando de configuração dos apps de net grátis" ; echo " Mostrar payloads das operadoras, funcionando"
+echo "● Instalar vários comandos para o gerenciamento da VPS" ; tput sgr0
+echo ""
+tput setaf 6 ; tput bold ; read -n 1 -s -p "Aperte qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
+IP=$(wget -qO- ipv4.icanhazip.com)
+read -p "Confirme se este IP é do seu servidor: " -e -i $IP ipdovps
+if [ -z "$ipdovps" ]
+then
+	tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "" ; echo " IP deste servidor está errado. Tente novamente. " ; echo "" ; echo "" ; tput sgr0
+	exit 1
+fi
+if [ -f "/root/usuarios.db" ]
+then
+tput setaf 5 ; tput bold ;	echo ""
+	echo "Uma Base de Dados de Usuários ('usuarios.db') foi encontrada!"
+	echo "Deseja mantê-la (mantendo o limite de conexões de usuários nesta base de dados)"
+	echo "ou criar uma nova base de dados do ZERO?"
+	tput setaf 2 ; tput bold ;	echo ""
+	echo "[1] Manter 'Base de Dados' Atual, ela não sofrerá mudanças."
+	echo "[2] Criar uma Nova 'Base de Dados', refaz o arquivo do zero."
+	echo "" ; tput sgr0
+	read -p "Opção?: " -e -i 1 optiondb
+else
+	awk -F : '$3 >= 500 { print $1 " 1" }' /etc/passwd | grep -v '^nobody' > /root/usuarios.db
+fi
+echo ""
+read -p "Ativar a 'compressão SSH' (pode usar mais memória RAM)? [s/n]) " -e -i n sshcompression
+echo ""
+tput setaf 4 ; tput setab 1 ; tput bold ; echo "" ; echo "Aguarde a configuração automática do seu VPS" ; echo "" ; tput sgr0
+sleep 3
+apt-get update -y
+rm /bin/apagar /bin/criar /bin/criarusuario /bin/ajuda /bin/apps /bin/payloads /bin/delhost /bin/addhost /bin/detalhes /bin/limitador /bin/sshlimiter /bin/limpar /bin/monitor /bin/monitorar /bin/mudardata /bin/mudarlimite /bin/mudarsenha /bin/velocidade /bin/velocimetro /bin/velocimetro.py > /dev/null
+rm /root/ExpCleaner.sh /root/CriarUsuario.sh /root/sshlimiter.sh > /dev/null
+apt-get install squid3 bc screen nano unzip dos2unix wget -y
+killall apache2
+apt-get purge apache2 -y
+if [ -f "/usr/sbin/ufw" ] ; then
+	ufw allow 443/tcp ; ufw allow 80/tcp ; ufw allow 3128/tcp ;
+fi
+if [ -d "/etc/squid3/" ]
+then
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/squid1 -O /tmp/sqd1
+	echo "acl url3 dstdomain -i $ipdovps" > /tmp/sqd2
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/squid2 -O /tmp/sqd3
+	cat /tmp/sqd1 /tmp/sqd2 /tmp/sqd3 > /etc/squid3/squid.conf
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/payload -O /etc/squid3/payload.txt
+	echo " " >> /etc/squid3/payload.txt
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/sites_bloqueados -O /etc/squid3/sites_bloqueados.txt
+	echo " " >> /etc/squid3/sites_bloqueados.txt
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/formato_arquivo -O /etc/squid3/formato_arquivo.txt
+	echo " " >> /etc/squid3/formato_arquivo.txt
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/access.log -O /var/log/squid3/access.log
+	echo " " >> /var/log/squid3/access.log
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/squid3.pid -O /var/log/squid3/squid3.pid
+	echo " " >> /var/log/squid3/squid3.pid
+	grep -v "^Port 443" /etc/ssh/sshd_config > /tmp/ssh && mv /tmp/ssh /etc/ssh/sshd_config
+	echo "Port 443" >> /etc/ssh/sshd_config
+	grep -v "^PasswordAuthentication yes" /etc/ssh/sshd_config > /tmp/passlogin && mv /tmp/passlogin /etc/ssh/sshd_config
+	echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
+	grep -v "^PermitTunnel yes" /etc/ssh/sshd_config > /tmp/ssh && mv /tmp/ssh /etc/ssh/sshd_config
+	echo "PermitTunnel yes" >> /etc/ssh/sshd_config
+	grep -v "^#UseDns yes" /etc/ssh/sshd_config > /tmp/ssh && mv /tmp/ssh /etc/ssh/sshd_config
+	echo "#UseDns yes" >> /etc/ssh/sshd_config
+	grep -v "^Banner /etc/banner" /etc/ssh/sshd_config > /tmp/ssh && mv /tmp/ssh /etc/ssh/sshd_config
+	echo "Banner /etc/banner" >> /etc/ssh/sshd_config
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/addhost -O /bin/addhost
+	chmod +x /bin/addhost
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/criar -O /bin/criar
+	chmod +x /bin/criar
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/criarusuario -O /bin/criarusuario
+	chmod +x /bin/criarusuario
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/detalhes -O /bin/detalhes
+	chmod +x /bin/detalhes
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/mudardata -O /bin/mudardata
+	chmod +x /bin/mudardata
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/limitador -O /bin/limitador
+	chmod +x /bin/limitador
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/sshlimiter -O /bin/sshlimiter
+	chmod +x /bin/sshlimiter
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/limpar -O /bin/limpar
+	chmod +x /bin/limpar
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/monitor -O /bin/monitor
+	chmod +x /bin/monitor
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/monitorar -O /bin/monitorar
+	chmod +x /bin/monitorar
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/mudarlimite -O /bin/mudarlimite
+	chmod +x /bin/mudarlimite
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/mudarsenha -O /bin/mudarsenha
+	chmod +x /bin/mudarsenha
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/delhost -O /bin/delhost
+	chmod +x /bin/delhost
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/apagar -O /bin/apagar
+	chmod +x /bin/apagar
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/apps -O /bin/apps
+	chmod +x /bin/apps
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/payloads -O /bin/payloads
+	chmod +x /bin/payloads
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocidade -O /bin/velocidade
+	chmod +x /bin/velocidade
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro -O /bin/velocimetro
+	chmod +x /bin/velocimetro
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro.py -O /bin/velocimetro.py
+	chmod +x /bin/velocimetro.py
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/ajuda -O /bin/ajuda
+	chmod +x /bin/ajuda
+	if [ ! -f "/etc/init.d/squid3" ]
+	then
+		service squid3 reload > /dev/null
+	else
+		/etc/init.d/squid3 reload > /dev/null
+	fi
+	if [ ! -f "/etc/init.d/ssh" ]
+	then
+		service ssh reload > /dev/null
+	else
+		/etc/init.d/ssh reload > /dev/null
+	fi
+fi
+if [ -d "/etc/squid/" ]
+then
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/squid1 -O /tmp/sqd1
+	echo "acl url3 dstdomain -i $ipdovps" > /tmp/sqd2
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/squid2 -O /tmp/sqd3
+	cat /tmp/sqd1 /tmp/sqd2 /tmp/sqd3 > /etc/squid3/squid.conf
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/payload -O /etc/squid3/payload.txt
+	echo " " >> /etc/squid3/payload.txt
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/sites_bloqueados -O /etc/squid3/sites_bloqueados.txt
+	echo " " >> /etc/squid3/sites_bloqueados.txt
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/formato_arquivo -O /etc/squid3/formato_arquivo.txt
+	echo " " >> /etc/squid3/formato_arquivo.txt
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/access.log -O /var/log/squid3/access.log
+	echo " " >> /var/log/squid3/access.log
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/squid3.pid -O /var/log/squid3/squid3.pid
+	echo " " >> /var/log/squid3/squid3.pid
+	grep -v "^Port 443" /etc/ssh/sshd_config > /tmp/ssh && mv /tmp/ssh /etc/ssh/sshd_config
+	echo "Port 443" >> /etc/ssh/sshd_config
+	grep -v "^PasswordAuthentication yes" /etc/ssh/sshd_config > /tmp/passlogin && mv /tmp/passlogin /etc/ssh/sshd_config
+	echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
+	grep -v "^PermitTunnel yes" /etc/ssh/sshd_config > /tmp/ssh && mv /tmp/ssh /etc/ssh/sshd_config
+	echo "PermitTunnel yes" >> /etc/ssh/sshd_config
+	grep -v "^#UseDns yes" /etc/ssh/sshd_config > /tmp/ssh && mv /tmp/ssh /etc/ssh/sshd_config
+	echo "#UseDns yes" >> /etc/ssh/sshd_config
+	grep -v "^Banner /etc/banner" /etc/ssh/sshd_config > /tmp/ssh && mv /tmp/ssh /etc/ssh/sshd_config
+	echo "Banner /etc/banner" >> /etc/ssh/sshd_config
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/addhost -O /bin/addhost
+	chmod +x /bin/addhost
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/criar -O /bin/criar
+	chmod +x /bin/criar
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/criarusuario -O /bin/criarusuario
+	chmod +x /bin/criarusuario
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/detalhes -O /bin/detalhes
+	chmod +x /bin/detalhes
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/mudardata -O /bin/mudardata
+	chmod +x /bin/mudardata
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/limitador -O /bin/limitador
+	chmod +x /bin/limitador
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/sshlimiter -O /bin/sshlimiter
+	chmod +x /bin/sshlimiter
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/limpar -O /bin/limpar
+	chmod +x /bin/limpar
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/monitor -O /bin/monitor
+	chmod +x /bin/monitor
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/monitorar -O /bin/monitorar
+	chmod +x /bin/monitorar
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/mudarlimite -O /bin/mudarlimite
+	chmod +x /bin/mudarlimite
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/mudarsenha -O /bin/mudarsenha
+	chmod +x /bin/mudarsenha
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/delhost -O /bin/delhost
+	chmod +x /bin/delhost
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/apagar -O /bin/apagar
+	chmod +x /bin/apagar
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/apps -O /bin/apps
+	chmod +x /bin/apps
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/payloads -O /bin/payloads
+	chmod +x /bin/payloads
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocidade -O /bin/velocidade
+	chmod +x /bin/velocidade
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro -O /bin/velocimetro
+	chmod +x /bin/velocimetro
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/velocimetro.py -O /bin/velocimetro.py
+	chmod +x /bin/velocimetro.py
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/ajuda -O /bin/ajuda
+	chmod +x /bin/ajuda
+	if [ ! -f "/etc/init.d/squid3" ]
+	then
+		service squid reload > /dev/null
+	else
+		/etc/init.d/squid reload > /dev/null
+	fi
+	if [ ! -f "/etc/init.d/ssh" ]
+	then
+		service ssh reload > /dev/null
+	else
+		/etc/init.d/ssh reload > /dev/null
+	fi
+fi
+echo ""
+tput setaf 7 ; tput setab 4 ; tput bold ; echo "Proxy Squid Instalado e rodando nas portas: 80 e 3128" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo "OpenSSH rodando nas portas 22 e 443" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo "No 'Virtual Master' dê o comando 'reboot' para funcionar" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo "Banner SSH configurado, edite-o comando: 'nano /etc/banner'" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo "Crie um usuario e use a vontade internet GRÁTIS" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo "Para ver os COMANDOS DISPONÍVEIS dê o comando: ajuda" ; tput sgr0
+echo ""
+if [[ "$optiondb" = '2' ]]; then
+	awk -F : '$3 >= 500 { print $1 " 1" }' /etc/passwd | grep -v '^nobody' > /root/usuarios.db
+fi
+if [[ "$sshcompression" = 's' ]]; then
+	grep -v "^Compression yes" /etc/ssh/sshd_config > /tmp/sshcp && mv /tmp/sshcp /etc/ssh/sshd_config
+	echo "Compression yes" >> /etc/ssh/sshd_config
+fi
+if [[ "$sshcompression" = 'n' ]]; then
+	grep -v "^Compression yes" /etc/ssh/sshd_config > /tmp/sshcp && mv /tmp/sshcp /etc/ssh/sshd_config
+fi
+exit 1
