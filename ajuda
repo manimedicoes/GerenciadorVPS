@@ -20,6 +20,6 @@ tput setaf 5 ; tput bold ; printf '%s' "badvpn " ; tput setaf 7 ; printf '%s' "-
 tput setaf 3 ; tput bold ; printf '%s' "criar " ; tput setaf 1 ; printf '%s' "- " ; tput setaf 7 ; echo "Cria usuário com data de expiração e pronto para LOGIN SEGURO, consulte comando 'apps'"
 tput setaf 3 ; tput bold ; printf '%s' "detalhes " ; tput setaf 1 ; printf '%s' "- " ; tput setaf 7 ; echo "Mostra nome, senha, data e logins dos criados com comando: 'criar'"
 tput setaf 2 ; tput bold ; printf '%s' "apps " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Como configurar os aplicativos Injector, Eproxy e Kpn"
-tput setaf 2 ; tput bold ; printf '%s' "sistema " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Exibe várias informações do VPS, memória, Processador, etc" ; echo ""
+tput setaf 2 ; tput bold ; printf '%s' "sistema " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Exibe várias informações do VPS, memória, Processador, etc"
 tput setaf 2 ; tput bold ; printf '%s' "log " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Mostra os sites visitados pelos usuários e o IP de quem visitou, 'Ctrl+z' para sair" ; echo ""
 tput sgr0
