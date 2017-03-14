@@ -20,5 +20,6 @@ tput setaf 2 ; tput bold ; printf '%s' "relogio " ; tput setaf 7 ; printf '%s' "
 tput setaf 2 ; tput bold ; printf '%s' "banner " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Cria o banner do VPS, depois de ditado: Ctrl+o e Ctrl+x para salvar"
 tput setaf 5 ; tput bold ; printf '%s' "criar " ; tput setaf 1 ; printf '%s' "- " ; tput setaf 7 ; echo "Cria usuário com data de expiração e pronto para login via CHAVE PÚBLICA"
 tput setaf 5 ; tput bold ; printf '%s' "detalhes " ; tput setaf 1 ; printf '%s' "- " ; tput setaf 7 ; echo "Mostra nome, senha, data e logins dos criados com comando: 'criar'"
-tput setaf 2 ; tput bold ; printf '%s' "apps " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 6 ; echo "Como configurar os aplicativos Injector, Eproxy e Kpn" ; echo ""
+tput setaf 2 ; tput bold ; printf '%s' "apps " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Como configurar os aplicativos Injector, Eproxy e Kpn"
+tput setaf 2 ; tput bold ; printf '%s' "log " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Entra no arquivoe mostra os sites visitados pelos usuários" ; echo ""
 tput sgr0
