@@ -1,6 +1,7 @@
 #!/bin/bash
 mkdir /etc/GerenciadorVPS 1>/dev/null 2>/dev/null
 mkdir /etc/GerenciadorVPS/senha 1>/dev/null 2>/dev/null
+mkdir /etc/GerenciadorVPS/limite 1>/dev/null 2>/dev/null
 if [ $(id -u) -eq 0 ]
 then
         echo -e "\033[1;32mNome do novo usuario:\033[0;37m"; read -p " " name
