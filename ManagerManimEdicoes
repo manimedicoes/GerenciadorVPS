@@ -121,6 +121,14 @@ then
 	chmod +x /bin/sistema
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/banner -O /bin/banner
 	chmod +x /bin/banner
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/midiasafe -O /bin/midiasafe
+	chmod +x /bin/midiasafe
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/midiablok -O /bin/midiablok
+	chmod +x /bin/midiablok
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/siteblok -O /bin/siteblok
+	chmod +x /bin/siteblok
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/sitesafe -O /bin/sitesafe
+	chmod +x /bin/sitesafe
 	if [ ! -f "/etc/init.d/squid3" ]
 	then
 		service squid3 reload > /dev/null
@@ -208,6 +216,14 @@ then
 	chmod +x /bin/sistema
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/banner -O /bin/banner
 	chmod +x /bin/banner
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/midiasafe -O /bin/midiasafe
+	chmod +x /bin/midiasafe
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/midiablok -O /bin/midiablok
+	chmod +x /bin/midiablok
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/siteblok -O /bin/siteblok
+	chmod +x /bin/siteblok
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/sitesafe -O /bin/sitesafe
+	chmod +x /bin/sitesafe
 	if [ ! -f "/etc/init.d/squid3" ]
 	then
 		service squid reload > /dev/null
