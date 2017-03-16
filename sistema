@@ -19,3 +19,6 @@ echo ""
 tput setaf 2 ; tput bold ; echo "DETALHES DA MEMORIA : " ; tput sgr0
 free | awk '/^Mem:/ { print "used: " 100*$3/$2 "%  free: " 100*$4/$2 "%";}'
 echo ""
+tput setaf 2 ; tput bold ; echo "INFO SOBRE A CPU : " ; tput sgr0
+inxi -C
+echo ""
