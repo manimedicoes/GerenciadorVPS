@@ -7,18 +7,12 @@ echo ""
 tput setaf 2 ; tput bold ; echo "TEMPO ATIVO : " ; tput sgr0
 uptime | sed 's/.*up \([^,]*\), .*/\1/'
 echo ""
-tput setaf 2 ; tput bold ; echo "MEMORIA RAM TOTAL : " ; tput sgr0
-free | grep Mem | awk '{ print $2 }'
+tput setaf 7 ; tput setab 4 ; printf '  %-30s%s\n' "DETALHES DA MEMORIA RAM" ; echo "" ; tput sgr0
+free -m -t
 echo ""
-tput setaf 2 ; tput bold ; echo "MEMORIA RAM USADA : " ; tput sgr0
-free | grep Mem | awk '{ print $3 }'
-echo ""
-tput setaf 2 ; tput bold ; echo "MEMORIA RAM LIVRE : " ; tput sgr0
-free | grep Mem | awk '{ print $4 }'
-echo ""
-tput setaf 2 ; tput bold ; echo "DETALHES DA MEMORIA : " ; tput sgr0
+tput setaf 2 ; tput bold ; echo "% da MEMORIA USADA e livre: " ; tput sgr0
 free | awk '/^Mem:/ { print "used: " 100*$3/$2 "%  free: " 100*$4/$2 "%";}'
 echo ""
-tput setaf 2 ; tput bold ; echo "INFO SOBRE A CPU : " ; tput sgr0
+tput setaf 2 ; tput bold ; echo "INFO SOBRE VPS : " ; tput sgr0
 inxi -C
 echo ""
