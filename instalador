@@ -1,8 +1,8 @@
 #!/bin/bash
 # (1=vermelho; 2=verde; 3=amarelo; 4=azul; 5=roxo; 6=azul claro; 7=branco; 9=limpa)
-tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "Gerenciador de VPS editada por ManimEdicoes Telegram @FranciscoManim" ; tput sgr0
-tput setaf 2 ; tput bold ; echo "" ; echo "Debian ou Ubuntu (32|64 bits), Este script irá:" ; echo ""
-echo "● Instalar e configurar o proxy squid nas portas 80 e 3128"
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "VPS Manager by ManimEdicoes Telegram @FranciscoManim" ; tput sgr0
+tput setaf 3 ; tput bold ; echo "" ; echo "Debian, Ubuntu e CentOS (32|64 bits), Este script irá:" ; echo ""
+echo "● Instalar e configurar o proxy squid nas portas 80 8080 8799 e 3128"
 echo "● Configurar o OpenSSH para rodar nas portas 22 e 443"
 echo "● Configurar o squid para autolimpar o cache mantendo-o rápido"
 echo "● Configurar 'log de acesso' de sites visitados pelos usuários"
@@ -39,14 +39,18 @@ echo ""
 tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "Aguarde a configuração automática do seu VPS" ; echo "" ; tput sgr0
 sleep 3
 apt-get update -y
-rm /bin/apagar /bin/criar /bin/criarusuario /bin/ajuda /bin/apps /bin/payloads /bin/delhost /bin/addhost /bin/detalhes /bin/limitador /bin/sshlimiter /bin/limpar /bin/monitor /bin/monitorar /bin/mudardata /bin/mudarlimite /bin/mudarsenha /bin/velocidade /bin/velocimetro /bin/velocimetro.py > /dev/null
+yum update -y
+rm /bin/listar /bin/expcleaner /bin/apagar /bin/criar /bin/criarusuario /bin/ajuda /bin/apps /bin/payloads /bin/delhost /bin/addhost /bin/detalhes /bin/limitador /bin/sshlimiter /bin/limpar /bin/monitor /bin/monitorar /bin/mudardata /bin/mudarlimite /bin/mudarsenha /bin/velocidade /bin/velocimetro /bin/velocimetro.py > /dev/null
 rm /root/ExpCleaner.sh /root/CriarUsuario.sh /root/sshlimiter.sh > /dev/null
 apt-get install squid3 bc screen nano unzip dos2unix wget -y
+yum install squid bc screen nano unzip dos2unix wget -y
 wget ftp://cathbard.com/binary/inxi*.deb
 sudo dpkg -i inxi*
 sudo apt-get -f install
 killall apache2
 apt-get purge apache2 -y
+killall httpd
+yum remove httpd -y
 if [ -f "/usr/sbin/ufw" ] ; then
 	ufw allow 443/tcp ; ufw allow 80/tcp ; ufw allow 3128/tcp ;
 fi
@@ -241,8 +245,9 @@ then
 	fi
 fi
 echo ""
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "Proxy Squid Instalado e rodando nas portas: 80 e 3128" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo "Proxy Squid Instalado e rodando nas portas: 80 8080 8799 e 3128" ; tput sgr0
 tput setaf 7 ; tput setab 4 ; tput bold ; echo "OpenSSH rodando nas portas 22 e 443" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo "Canal Telegram: @NetGratisMobileE Dono: @FranciscoManim" ; tput sgr0
 tput setaf 7 ; tput setab 4 ; tput bold ; echo "No 'Virtual Master' dê o comando 'reboot' para funcionar" ; tput sgr0
 tput setaf 7 ; tput setab 4 ; tput bold ; echo "Crie um usuario e use a vontade a internet GRÁTIS" ; tput sgr0
 tput setaf 7 ; tput setab 4 ; tput bold ; echo "Para ver os 'COMANDOS DISPONÍVEIS' dê o comando: ajuda" ; tput sgr0
