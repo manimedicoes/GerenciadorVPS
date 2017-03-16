@@ -4,24 +4,26 @@ if [ -f "/usr/local/bin/badvpn-udpgw" ]
 then
 	tput setaf 3 ; tput bold ; echo ""
 	echo ""
-	echo "O BadVPN já foi instalado com sucesso."
-	echo "Para executar, dê o comando 'screen' aperte qqr tecla"
-	echo "E execute o comando:"
+	echo "O BadVPN foi instalado com sucesso."
+	echo "Para executar, dê o comando 'screen' aperte qqr tecla, dê o comando:"
 	echo "badudp"
 	echo ""
-	echo "E aperte juntos Ctrl+d para voltar ao Prompt."
-	echo "Voltar para o 'badudp' dê 'screen -r'"
+	echo "ANOTE ESTES COMANDOS VC VAI PRECISAR"
+	echo "Voltar ao Prompt, aperte juntos Ctrl+d."
+	echo "Resumir sessão screen 'BadUdp' dê 'screen -r'"
+	echo "Vê sessões ativas [Attached] 'screen -ls'"
+	echo "Reconectar se falhou [Detached] 'screen -r pts_da_sessão'"
 	echo "" ; tput sgr0
 	exit
 else
 tput setaf 2 ; tput bold ; echo ""
 echo "Este é um script que instala automaticamente o programa"
-echo "BadVPN em servidores Debian e Ubuntu para ativar o encaminhamento UDP"
+echo "BadVPN em servidor Debian e Ubuntu para ativar o UDP"
 echo "na Porta 7300, usado por aplicativos de internet grátis."
-echo "Permitindo assim a utilização do protocolo UDP para jogos online,"
-echo "chamadas VoIP e Video chamadas, melhora o áudio e vídeo online."
+echo "Permitindo jogar online, fazer Ligação VoIP, VideoChamada"
+echo "e melhora o áudio e vídeo online."
 echo "" ; tput sgr0
-read -p "Deseja continuar? [s/n]: " -e -i n resposta
+read -p "Deseja continuar? [s/n]: " -e -i s resposta
 if [[ "$resposta" = 's' ]]; then
 	echo ""
 	echo "A instalação pode DEMORAR bastante... SEJA PACIENTE!"
@@ -53,13 +55,15 @@ if [[ "$resposta" = 's' ]]; then
 	clear
 	tput setaf 3 ; tput bold ; echo ""
 	echo ""
-	echo "O BadVPN já foi instalado com sucesso."
-	echo "Para executar, dê o comando 'screen' aperte qqr tecla"
-	echo "E execute o comando:"
+	echo "O BadVPN foi instalado com sucesso."
+	echo "Para executar, dê o comando 'screen' aperte qqr tecla, dê o comando:"
 	echo "badudp"
 	echo ""
-	echo "E aperte juntos Ctrl+d para voltar ao Prompt."
-	echo "Voltar para o 'badudp' dê 'screen -r'"
+	echo "ANOTE ESTES COMANDOS VC VAI PRECISAR"
+	echo "Voltar ao Prompt, aperte juntos Ctrl+d."
+	echo "Resumir sessão screen 'BadUdp' dê 'screen -r'"
+	echo "Vê sessões ativas [Attached] 'screen -ls'"
+	echo "Reconectar se falhou [Detached] 'screen -r pts_da_sessão'"
 	echo "" ; tput sgr0
 	exit
 else 
