@@ -6,6 +6,7 @@ acl formato_arquivo url_regex -i "/etc/squid3/formato_arquivo.txt"
 acl sites_bloqueados url_regex -i "/etc/squid3/sites_bloqueados.txt"
 acl netflix dstdomain .netflix.
 acl youtube dstdomain .youtube.
+acl facebook dstdomain .facebook.
 acl downloads_proibidos url_regex -i \.torrent
 
 acl CONNECT method CONNECT
@@ -13,13 +14,7 @@ acl GET method GET
 acl POST method POST
 acl OPTIONS method OPTIONS
 acl HEAD method HEAD
-acl REQUEST method CONNECT
-acl REQUEST method GET
-acl REQUEST method POST
-acl REQUEST method OPTIONS
-acl REQUEST method HEAD
 
-http_access allow REQUEST
 http_access allow payloads
 http_access allow url1
 http_access allow url2
@@ -31,11 +26,14 @@ http_access deny formato_arquivo
 http_access deny sites_bloqueados
 http_access allow netflix
 http_access allow youtube
+http_access allow facebook
 http_access deny downloads_proibidos
 http_access deny all
 
 http_port 80
 http_port 3128
+http_port 8080
+http_port 8799
 
 visible_hostname Telegram:@NetGratisMobileE
 
