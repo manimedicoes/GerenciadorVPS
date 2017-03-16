@@ -34,7 +34,7 @@ else
 	awk -F : '$3 >= 500 { print $1 " 1" }' /etc/passwd | grep -v '^nobody' > /root/usuarios.db
 fi
 echo ""
-read -p "Ativar a 'compressão SSH' (pode usar mais memória RAM)? [s/n]) " -e -i s sshcompression
+read -p "Ativar a 'compressão SSH' (pode usar mais memória RAM)? [s/n]) " -e -i n sshcompression
 echo ""
 tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "Aguarde a configuração automática do seu VPS" ; echo "" ; tput sgr0
 sleep 3
