@@ -136,6 +136,8 @@ then
 	chmod +x /bin/siteblok
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/sitesafe -O /bin/sitesafe
 	chmod +x /bin/sitesafe
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/expirados -O /bin/expirados
+	chmod +x /bin/expirados
 	if [ ! -f "/etc/init.d/squid3" ]
 	then
 		service squid3 reload > /dev/null
@@ -231,6 +233,8 @@ then
 	chmod +x /bin/siteblok
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/sitesafe -O /bin/sitesafe
 	chmod +x /bin/sitesafe
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/expirados -O /bin/expirados
+	chmod +x /bin/expirados
 	if [ ! -f "/etc/init.d/squid3" ]
 	then
 		service squid reload > /dev/null
