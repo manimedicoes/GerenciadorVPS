@@ -14,7 +14,7 @@ tput setaf 2 ; tput bold ; printf '%s' "velocidade " ; tput setaf 7 ; printf '%s
 tput setaf 2 ; tput bold ; printf '%s' "velocimetro " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Mede a navegação em Megabits (Mb), divida por 8 e terá a velocidade real"
 tput setaf 2 ; tput bold ; printf '%s' "limpar " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Limpa a 'MEMÓRIA OCIOSA' mantendo o VPS mais rápido, ñ abuse deste comando"
 tput setaf 2 ; tput bold ; printf '%s' "relogio " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Configurar relogio do VPS, escolha sua cidade ou local com horário igual a vc, 'date' vê a hora"
-tput setaf 2 ; tput bold ; printf '%s' "banner " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 6 ; echo "Cria o BANNER do VPS, Salvar: 'Ctrl+o' 'Ctrl+x' e 'service ssh restart'"
+tput setaf 2 ; tput bold ; printf '%s' "banner " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 6 ; echo "Criar BANNER do VPS, Salvar: 'Ctrl+x' 'y' 'Enter' e 'service ssh restart'"
 tput setaf 2 ; tput bold ; printf '%s' "midiablok " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Bloquear download de arquivo por formato"
 tput setaf 2 ; tput bold ; printf '%s' "midiasafe " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Liberar download do formato de arquivo adicionado no bloqueio"
 tput setaf 2 ; tput bold ; printf '%s' "siteblok " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Bloquear navegação no site adicionado a Lista Negra"
