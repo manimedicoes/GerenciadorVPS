@@ -5,6 +5,7 @@ tput setaf 2 ; tput bold ; printf '%s' "apagar " ; tput setaf 7 ; printf '%s' "-
 tput setaf 2 ; tput bold ; printf '%s' "mudarsenha " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Muda a senha do usuário selecionado"
 tput setaf 2 ; tput bold ; printf '%s' "mudardata " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Mudar a data de expiração de um usuário"
 tput setaf 2 ; tput bold ; printf '%s' "mudarlimite " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Mudar conexões de usuarios criados com o comando: 'criarusuario'"
+tput setaf 2 ; tput bold ; printf '%s' "expirados " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Deleta usuarios com data de vencimento expirado e q ñ vão mais renovar"
 tput setaf 2 ; tput bold ; printf '%s' "monitor " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Verifica quem está conectado e quantos logins está usando"
 tput setaf 2 ; tput bold ; printf '%s' "monitorar " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Monitora a quantidade de conexões simultâneas dos usuários"
 tput setaf 2 ; tput bold ; printf '%s' "sshlimiter " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Limita as conexões de acordo com o limite dado a ele"
