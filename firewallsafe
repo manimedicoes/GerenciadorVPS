@@ -1,0 +1,16 @@
+#!/bin/bash
+iptables -F
+iptables -X
+iptables -F INPUT
+iptables -F FORWARD
+iptables -F OUTPUT
+echo -e "\033[41;1;27mIPTABLES RESETANDO NAT\033[0m"
+sleep 1s
+iptables -t nat -F
+iptables -t nat -X
+iptables -t nat -Z
+echo -e "\033[41;1;27mIPTABLES RESETANDO MANGLE\033[0m"
+iptables -t mangle -X
+iptables -t mangle -F
+iptables -t mangle -Z
+echo -e "\033[41;1;27mIPTABLES FIREWALL RESETADO\033[0m"
