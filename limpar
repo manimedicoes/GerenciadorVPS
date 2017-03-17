@@ -1,5 +1,5 @@
 #!/bin/bash
-tput setaf 7 ; tput setab 4 ; tput bold ; printf '%30s%s%-15s\n' "Otimizar Servidor 1.0" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%30s%s%-15s\n' "Melhorar Servidor VPS" ; tput sgr0
 #
 tput setaf 2 ; tput bold ; echo "	Removendo pacotes inúteis..." ; tput sgr0
 #
