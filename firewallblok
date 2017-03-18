@@ -22,6 +22,7 @@ iptables -t mangle -F
 iptables -t mangle -X
 tput setaf 7 ; tput setab 4 ; tput bold ; echo "   Aguarde a RÁPIDA configuração automática   " ; echo "" ; tput sgr0
 sleep 1
+echo 1 > /proc/sys/net/ipv4/ip_forward
 iptables -P INPUT DROP
 iptables -P FORWARD DROP
 iptables -P OUTPUT ACCEPT
