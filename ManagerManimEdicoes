@@ -40,6 +40,8 @@ tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "Aguarde a configuraÃ§Ã
 sleep 3
 apt-get update -y
 yum update -y
+apt-get install iptables -y
+yum install iptables -y
 rm /bin/listar /bin/expcleaner /bin/apagar /bin/criar /bin/criarusuario /bin/ajuda /bin/apps /bin/payloads /bin/delhost /bin/addhost /bin/detalhes /bin/limitador /bin/sshlimiter /bin/limpar /bin/monitor /bin/monitorar /bin/mudardata /bin/mudarlimite /bin/mudarsenha /bin/velocidade /bin/velocimetro /bin/velocimetro.py > /dev/null
 rm /root/ExpCleaner.sh /root/CriarUsuario.sh /root/sshlimiter.sh > /dev/null
 apt-get install squid3 bc screen nano unzip dos2unix wget -y
