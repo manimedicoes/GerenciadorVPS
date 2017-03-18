@@ -2,16 +2,12 @@
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%30s%s%-15s\n' "Detalhes deste Servidor" ; tput sgr0
 tput setaf 2 ; tput bold ; echo "HOSTNAME : " ; tput sgr0
 hostname
-echo ""
 tput setaf 2 ; tput bold ; echo "INFO CPU da VPS : " ; tput sgr0
 inxi man
-echo ""
 tput setaf 2 ; tput bold ; echo "TEMPO ATIVO : " ; tput sgr0
 uptime | sed 's/.*up \([^,]*\), .*/\1/'
-echo ""
-tput setaf 7 ; tput setab 2 ; printf '  %-30s%s\n' "DETALHES da MEMORIA RAM : " ; tput sgr0
+tput setaf 7 ; tput setab 4 ; printf '  %-30s%s\n' "DETALHES da MEMORIA RAM : " ; tput sgr0
 free -m -t
-echo ""
-tput setaf 2 ; tput bold ; echo "% da MEMORIA USADA e LIVRE : " ; tput sgr0
+tput setaf 2 ; tput bold ; echo "  % da MEMORIA USADA e LIVRE : " ; tput sgr0
 free | awk '/^Mem:/ { print "used: " 100*$3/$2 "%  free: " 100*$4/$2 "%";}'
 echo ""
