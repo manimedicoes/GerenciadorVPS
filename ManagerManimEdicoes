@@ -1,7 +1,7 @@
 #!/bin/bash
 # (1=vermelho; 2=verde; 3=amarelo; 4=azul; 5=roxo; 6=azul claro; 7=branco; 9=limpa)
-tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "VPS Manager by ManimEdicoes Telegram @FranciscoManim" ; tput sgr0
-tput setaf 3 ; tput bold ; echo "" ; echo "Debian, Ubuntu e CentOS (32|64 bits), Este script irá:" ; echo ""
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "  VPS Manager by ManimEdicoes Telegram @FranciscoManim  " ; tput sgr0
+tput setaf 3 ; tput bold ; echo "" ; echo "  Debian, Ubuntu e CentOS (32|64 bits), Este script irá:  " ; echo ""
 echo "● Instalar e configurar o proxy squid nas portas 80 8080 8799 e 3128"
 echo "● Configurar o OpenSSH para rodar nas portas 22 e 443"
 echo "● Configurar o squid para autolimpar o cache mantendo-o rápido"
@@ -140,6 +140,10 @@ then
 	chmod +x /bin/sitesafe
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/expirados -O /bin/expirados
 	chmod +x /bin/expirados
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/firewallblok -O /bin/firewallblok
+	chmod +x /bin/firewallblok
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/firewallsafe -O /bin/firewallsafe
+	chmod +x /bin/firewallsafe
 	if [ ! -f "/etc/init.d/squid3" ]
 	then
 		service squid3 reload > /dev/null
@@ -237,6 +241,9 @@ then
 	chmod +x /bin/sitesafe
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/expirados -O /bin/expirados
 	chmod +x /bin/expirados
+	chmod +x /bin/firewallblok
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/firewallsafe -O /bin/firewallsafe
+	chmod +x /bin/firewallsafe
 	if [ ! -f "/etc/init.d/squid3" ]
 	then
 		service squid reload > /dev/null
