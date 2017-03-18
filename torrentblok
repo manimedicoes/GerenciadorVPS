@@ -1,6 +1,6 @@
 #!/bin/bash
-tput setaf 1 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "Bloqueando Torrent Telegram @FranciscoManim" ; tput sgr0
-tput setaf 2 ; tput bold ; echo "" ; echo "Este script irá instalar no Debian, Ubuntu e CentOS:" ; echo ""
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "Bloqueando Torrent Telegram @FranciscoManim" ; tput sgr0
+tput setaf 3 ; tput bold ; echo "" ; echo "Este script irá instalar no Debian, Ubuntu e CentOS:" ; echo ""
 echo "● Bloquear TORRENT e SITES de invasões Sniffer" ; tput sgr0
 echo ""
 tput setaf 6 ; tput bold ; read -n 1 -s -p "Aperte qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
@@ -13,6 +13,13 @@ then
 fi
 tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "Aguarde a configuração automática" ; echo "" ; tput sgr0
 sleep 1
+iptables -N syn-chain
+iptables -N LOGDROP > /dev/null 2> /dev/null
+iptables -F LOGDROP 
+iptables -A LOGDROP -j LOG --log-prefix "LOGDROP "
+iptables -A LOGDROP -j DROP
+iptables -t filter -A syn-chain -j DROP
+iptables -A INPUT -p icmp --icmp-type echo-request -j DROP
 iptables -A FORWARD -m string --algo bm --string "Torrent" -j DROP
 iptables -A FORWARD -m string --algo bm --string "torrent" --to 65535 -j DROP
 iptables -A FORWARD -m string --algo bm --string ".torrent" --to 65535 -j DROP
@@ -67,3 +74,7 @@ iptables -A FORWARD -p TCP --dport 1214 -j REJECT
 iptables -A FORWARD -p TCP --dport 6346 -j REJECT
 # Audiogalaxy BLOQUEAR:
 iptables -A FORWARD -d 64.245.58.0/23 -j REJECT
+iptables -t filter -A syn-chain -p tcp --syn -m limit --limit 2/s -j ACCEPT
+iptables -A INPUT -p tcp --syn -s 127.0.0.1 -j ACCEPT
+iptables -A FORWARD -p tcp --dport 3000 -d $ipdovps -j ACCEPT
+iptables -A INPUT -p icmp --icmp-type echo-request -m limit --limit 1/s -j ACCEPT
