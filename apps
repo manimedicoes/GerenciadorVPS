@@ -1,9 +1,9 @@
 #!/bin/bash
-tput setaf 7 ; tput setab 4 ; tput bold ; printf '%30s%s%-10s\n' "Todos os apps seguem a mesma sequencia:" ; tput sgr0 ; echo ""
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%30s%s%-10s\n' "Todos os apps seguem a mesma sequencia:" ; tput sgr0
 tput setaf 2 ; tput bold ; printf '%s' "CONTA SSH e PROXY: " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "IP_VPS & IP_VPS:Porta"
 tput setaf 2 ; tput bold ; printf '%s' "PORTA SSH: " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "443"
 tput setaf 2 ; tput bold ; printf '%s' "USUÁRIO & SENHA: " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Usuário criado e senha definida para ele" ; echo ""
-tput setaf 7 ; tput setab 4 ; tput bold ; printf '%30s%s%-10s\n' "Portas do Proxy e PayLoads:" ; tput sgr0 ; echo ""
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%30s%s%-10s\n' "Portas do Proxy e PayLoads:" ; tput sgr0
 tput setaf 2 ; tput bold ; printf '%s' "Claro: " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Porta do proxy: 80, 8080, 8799" ; echo "GET http://www.clarosync.com/ HTTP/1.1[cr][lf] [crlf][crlf][netData][cr][lf] [lf][lf]" ; echo ""
 tput setaf 2 ; tput bold ; printf '%s' "vivo: " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Porta do proxy: 80" ; echo "[method] [host_port]@sdp.vivo.com.br [protocol]@NetGratisMobileE[crlf][crlf]" ; echo ""
 tput setaf 2 ; tput bold ; printf '%s' "Tim: " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Porta do proxy: 80"; echo "[netData][crlf][split]GET http://tim.anti-theft.kaspersky.com/[protocol][crlf][crlf]" ; echo ""
