@@ -5,14 +5,15 @@ then
 	tput setaf 3 ; tput bold ; echo ""
 	echo ""
 	echo "O BadVPN foi instalado com sucesso."
-	echo "Para executar, dê o comando 'screen' aperte qqr tecla, dê o comando:"
+	echo " 1º dê o comando 'screen' aperte qqr tecla, 2º dê o comando:"
 	echo "badudp"
 	echo ""
 	echo "ANOTE ESTES COMANDOS VC VAI PRECISAR"
-	echo "Voltar ao Prompt, aperte juntos Ctrl+d."
-	echo "Resumir sessão screen 'BadUdp' dê 'screen -r'"
+	echo "Voltar sem fechar, aperte juntos Ctrl+a+d."
+	echo "Resumir sessão screen dê 'screen -r'"
 	echo "Vê sessões ativas [Attached] 'screen -ls'"
 	echo "Reconectar se falhou [Detached] 'screen -r pts_da_sessão'"
+	echo "Parar, na sessão screen dê 'Ctrl+c'"
 	echo "" ; tput sgr0
 	exit
 else
@@ -60,10 +61,11 @@ if [[ "$resposta" = 's' ]]; then
 	echo "badudp"
 	echo ""
 	echo "ANOTE ESTES COMANDOS VC VAI PRECISAR"
-	echo "Voltar ao Prompt, aperte juntos Ctrl+d."
-	echo "Resumir sessão screen 'BadUdp' dê 'screen -r'"
+	echo "Voltar ao Prompt, aperte juntos Ctrl+a+d."
+	echo "Resumir sessão screen dê 'screen -r'"
 	echo "Vê sessões ativas [Attached] 'screen -ls'"
 	echo "Reconectar se falhou [Detached] 'screen -r pts_da_sessão'"
+	echo "Parar, na sessão screen dê 'Ctrl+c'"
 	echo "" ; tput sgr0
 	exit
 else 
