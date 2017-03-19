@@ -1,0 +1,29 @@
+#!/bin/bash
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "  Monitor de Tráfego by @FranciscoManim  " ; tput sgr0
+tput setaf 3 ; tput bold ; echo "" ; echo "  ANOTE ESTES PASSOS VC PRECISARÁ DELES:  " ; echo ""
+echo "● Você precisa saber sua Interface de Rede 'eth0' ou 'eth1' ou 'eth...':"
+echo "● 1- Para ver a sua interface de rede, cancele esta instalação:"
+echo "● usando o Comando: Ctrl+c e já no Prompt o comando: ifconfig"
+echo "● ... Continuando a instalação ..."
+echo "● 2- Quando a tela ficar 'roxa' e aparecer uma barrinha com 'nome'"
+echo "● Troque 'nome' por 'eth0' ou outra interface de rede e dê 'Enter'."
+echo "● 3- Defina uma senha  'Lembre-se dela' e 'Enter' instalado." ; tput sgr0
+echo ""
+tput setaf 6 ; tput bold ; read -n 1 -s -p "  Aperte qualquer tecla para continuar...  " ; echo "" ; echo "" ; tput sgr0
+sleep 3
+iptables -A FORWARD -p tcp --dport 3000 -j ACCEPT
+apt-get autoremove ntop
+apt-get install ntop
+echo ""
+	if [ ! -f "/usr/sbin/ntop" ]
+	then
+		service ntop start > /dev/null
+	else
+		/etc/init.d/ntop start > /dev/null
+fi
+echo ""
+tput setaf 7 ; tput setab 4 ; tput bold ; echo " Agradeça ao usuário Telegram: @FranciscoManim " ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo " Monitor de tráfego instalado com sucesso " ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo " Entre em qualquer navegador e digite: ip_do_vps:3000" ; tput sgr0
+echo ""
+exit 1
