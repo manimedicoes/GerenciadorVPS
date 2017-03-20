@@ -9,6 +9,7 @@ tput setaf 2 ; tput bold ; printf '%s' "expirados " ; tput setaf 7 ; printf '%s'
 tput setaf 2 ; tput bold ; printf '%s' "monitor " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Verifica quem está conectado e quantos logins está usando"
 tput setaf 2 ; tput bold ; printf '%s' "monitorar " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Monitora a quantidade de conexões simultâneas dos usuários"
 tput setaf 2 ; tput bold ; printf '%s' "sshlimiter " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Limita as conexões de acordo com o limite dado a ele"
+tput setaf 2 ; tput bold ; printf '%s' "limitador " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Derruba a conexão de TODOS os usuário enquanto o comando estiver ativo"
 tput setaf 2 ; tput bold ; printf '%s' "addhost " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Adicionar domínio 'host' a lista de domínios permitidos no Proxy Squid"
 tput setaf 2 ; tput bold ; printf '%s' "delhost " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Remover domínio 'host' da lista de domínios permitidos no Proxy Squid"
 tput setaf 2 ; tput bold ; printf '%s' "velocidade " ; tput setaf 7 ; printf '%s' "- " ; tput setaf 3 ; echo "Mede a taxa de download e mostra tabela de referencia de tempo de download"
