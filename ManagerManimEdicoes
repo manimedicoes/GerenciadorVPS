@@ -144,8 +144,8 @@ then
 	chmod +x /bin/firewallsafe
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/limitador -O /bin/limitador
 	chmod +x /bin/limitador
-	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/monitorartrafego -O /bin/monitorartrafego
-	chmod +x /bin/monitorartrafego
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/trafego -O /bin/trafego
+	chmod +x /bin/trafego
 	if [ ! -f "/etc/init.d/squid3" ]
 	then
 		service squid3 reload > /dev/null
@@ -249,8 +249,8 @@ then
 	chmod +x /bin/firewallsafe
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/limitador -O /bin/limitador
 	chmod +x /bin/limitador
-	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/monitorartrafego -O /bin/monitorartrafego
-	chmod +x /bin/monitorartrafego
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/trafego -O /bin/trafego
+	chmod +x /bin/trafego
 	if [ ! -f "/etc/init.d/squid3" ]
 	then
 		service squid reload > /dev/null
