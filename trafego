@@ -24,7 +24,7 @@ fi
 echo ""
 tput setaf 7 ; tput setab 4 ; tput bold ; echo " Monitor de tráfego instalado com sucesso " ; tput sgr0
 tput setaf 7 ; tput setab 4 ; tput bold ; echo " Agradeça ao usuário Telegram: @FranciscoManim " ; tput sgr0
-tput setaf 7 ; tput setab 4 ; tput bold ; echo " Vamos monitorar o Tráfego deste VPS da seguinte forma:" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo " Para monitorar o Tráfego deste VPS faça:" ; tput sgr0
 tput setaf 7 ; tput setab 4 ; tput bold ; echo " Entre em qualquer navegador e digite: ip_do_vps:3000" ; tput sgr0
 echo ""
 exit 1
