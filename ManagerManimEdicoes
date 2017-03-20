@@ -1,17 +1,15 @@
 #!/bin/bash
 # (1=vermelho; 2=verde; 3=amarelo; 4=azul; 5=roxo; 6=azul claro; 7=branco; 9=limpa)
-tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "  VPS Manager by ManimEdicoes Telegram @FranciscoManim  " ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' "  ManagerManimEdicoes Telegram @FranciscoManim  " ; tput sgr0
 tput setaf 3 ; tput bold ; echo "" ; echo "  Debian, Ubuntu e CentOS (32|64 bits), Este script irá:  " ; echo ""
 echo "● Instalar e configurar o proxy squid nas portas 80 8080 8799 e 3128"
-echo "● Configurar o OpenSSH para rodar nas portas 22 e 443"
-echo "● Configurar o squid para autolimpar o cache mantendo-o rápido"
-echo "● Configurar 'log de acesso' de sites visitados pelos usuários"
-echo "● Bloqueio médio: TORRENT e SITES de invasões Sniffer"
+echo "● Configurar autolimpeza do squid cache mantendo-o rápido"
+echo "● Instalar 'log de acesso' de sites visitados pelos usuários"
+echo "● Bloquear: TORRENT e proteger contra ataques Ddos, Syn, ..."
 echo "● Liberar: Youtube HD, NetFlix BR, Áudio e VideoChamada em Redes Sociais"
-echo "● Instalar Banner e comando que mostra PayLoads e como configurar os Apps"
-echo "● Instalar vários comandos para o gerenciamento do VPS" ; tput sgr0
+echo "● Instalar Banner e vários comandos para o gerenciamento do VPS" ; tput sgr0
 echo ""
-tput setaf 6 ; tput bold ; read -n 1 -s -p "Aperte qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
+tput setaf 6 ; tput bold ; read -n 1 -s -p " Aperte qualquer tecla para continuar... " ; echo "" ; echo "" ; tput sgr0
 IP=$(wget -qO- ipv4.icanhazip.com)
 read -p "Confirme se este IP é do seu servidor: " -e -i $IP ipdovps
 if [ -z "$ipdovps" ]
@@ -22,21 +20,21 @@ fi
 if [ -f "/root/usuarios.db" ]
 then
 tput setaf 5 ; tput bold ;	echo ""
-	echo "Uma Base de Dados de Usuários ('usuarios.db') foi encontrada!"
-	echo "Deseja mantê-la (mantendo o limite de conexões de usuários nesta base de dados)"
-	echo "ou criar uma nova base de dados do ZERO?"
+	echo " Uma Base de Dados de Usuários ('usuarios.db') foi encontrada!"
+	echo " Deseja mantê-la (mantendo o limite de conexões de usuários nesta base de dados)"
+	echo " ou criar uma nova base de dados do ZERO?"
 	tput setaf 6 ; tput bold ;	echo ""
 	echo "[1] Manter 'Base de Dados' Atual, ela não sofrerá mudanças."
 	echo "[2] Criar uma Nova 'Base de Dados', refaz o arquivo do zero."
 	echo "" ; tput sgr0
-	read -p "Opção?: " -e -i 1 optiondb
+	read -p " Opção?: " -e -i 1 optiondb
 else
 	awk -F : '$3 >= 500 { print $1 " 1" }' /etc/passwd | grep -v '^nobody' > /root/usuarios.db
 fi
 echo ""
-read -p "Ativar a 'compressão SSH' (pode usar mais memória RAM)? [s/n]) " -e -i n sshcompression
+read -p " Ativar a 'compressão SSH' (pode usar mais memória RAM)? [s/n]) " -e -i n sshcompression
 echo ""
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "Aguarde a configuração automática do seu VPS" ; echo "" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo " Aguarde a configuração automática do seu VPS " ; echo "" ; tput sgr0
 sleep 3
 apt-get update -y
 yum update -y
@@ -144,6 +142,8 @@ then
 	chmod +x /bin/firewallblok
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/firewallsafe -O /bin/firewallsafe
 	chmod +x /bin/firewallsafe
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/limitador -O /bin/limitador
+	chmod +x /bin/limitador
 	if [ ! -f "/etc/init.d/squid3" ]
 	then
 		service squid3 reload > /dev/null
@@ -241,9 +241,12 @@ then
 	chmod +x /bin/sitesafe
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/expirados -O /bin/expirados
 	chmod +x /bin/expirados
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/firewallsafe -O /bin/firewallblok
 	chmod +x /bin/firewallblok
 	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/firewallsafe -O /bin/firewallsafe
 	chmod +x /bin/firewallsafe
+	wget https://raw.githubusercontent.com/manimedicoes/GerenciadorVPS/master/limitador -O /bin/limitador
+	chmod +x /bin/limitador
 	if [ ! -f "/etc/init.d/squid3" ]
 	then
 		service squid reload > /dev/null
@@ -258,12 +261,10 @@ then
 	fi
 fi
 echo ""
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "Proxy Squid Instalado e rodando nas portas: 80 8080 8799 e 3128" ; tput sgr0
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "OpenSSH rodando nas portas 22 e 443" ; tput sgr0
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "Canal Telegram: @NetGratisMobileE Dono: @FranciscoManim" ; tput sgr0
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "No 'Virtual Master' dê o comando 'reboot' para funcionar" ; tput sgr0
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "Crie um usuario e use a vontade a internet GRÁTIS" ; tput sgr0
-tput setaf 7 ; tput setab 4 ; tput bold ; echo "Para ver os 'COMANDOS DISPONÍVEIS' dê o comando: ajuda" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo " Proxy Squid Instalado e rodando nas portas: 80 8080 8799 e 3128" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo " Canal Telegram: @NetGratisMobileE Dono: @FranciscoManim" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo " No 'Virtual Master' dê o comando 'reboot' para funcionar" ; tput sgr0
+tput setaf 7 ; tput setab 4 ; tput bold ; echo " Para ver os 'COMANDOS DISPONÍVEIS' dê o comando: ajuda" ; tput sgr0
 echo ""
 if [[ "$optiondb" = '2' ]]; then
 	awk -F : '$3 >= 500 { print $1 " 1" }' /etc/passwd | grep -v '^nobody' > /root/usuarios.db
