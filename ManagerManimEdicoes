@@ -9,7 +9,7 @@ echo "● Bloquear: TORRENT e proteger contra ataques Ddos, Syn, ..."
 echo "● Liberar: Youtube HD, NetFlix BR, Áudio e VideoChamada em Redes Sociais"
 echo "● Instalar Banner e vários comandos para o gerenciamento do VPS" ; tput sgr0
 echo ""
-tput setaf 6 ; tput bold ; read -n 1 -s -p " Aperte qualquer tecla para continuar... " ; echo "" ; echo "" ; tput sgr0
+tput setaf 6 ; tput bold ; read -n 1 -s -p " Aperte qualquer tecla para continuar ou Ctrl+c para cancelar... " ; echo "" ; echo "" ; tput sgr0
 IP=$(wget -qO- ipv4.icanhazip.com)
 read -p "Confirme se este IP é do seu servidor: " -e -i $IP ipdovps
 if [ -z "$ipdovps" ]
