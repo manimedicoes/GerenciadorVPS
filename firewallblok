@@ -3,7 +3,7 @@ tput setaf 7 ; tput setab 4 ; tput bold ; printf '%35s%s%-20s\n' " Bloqueio de T
 tput setaf 3 ; tput bold ; echo "" ; echo "  Este script irá fazer no Debian, Ubuntu e CentOS:  " ; echo ""
 echo "● Bloquear TORRENT e ataques Sniffer e Ddos" ; tput sgr0
 echo ""
-tput setaf 6 ; tput bold ; read -n 1 -s -p "Aperte qualquer tecla para continuar..." ; echo "" ; echo "" ; tput sgr0
+tput setaf 6 ; tput bold ; read -n 1 -s -p "Aperte qualquer tecla para continuar ou Ctrl+c para cancelar..." ; echo "" ; echo "" ; tput sgr0
 IP=$(wget -qO- ipv4.icanhazip.com)
 read -p " Para continuar confirme se este é o IP do seu servidor: " -e -i $IP ipdovps
 if [ -z "$ipdovps" ]
