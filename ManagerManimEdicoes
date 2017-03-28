@@ -42,6 +42,10 @@ apt-get install iptables -y
 yum install iptables -y
 rm -r /bin/banner /bin/firewallsafe /bin/firewallblok /bin/log /bin/midiablok /bin/midiasafe /bin/relogio /bin/sitesafe /bin/siteblok /bin/badvpn /bin/expirados /bin/latencia /bin/sistema /bin/listar /bin/expcleaner /bin/apagar /bin/criar /bin/criarusuario /bin/ajuda /bin/apps /bin/payloads /bin/delhost /bin/addhost /bin/detalhes /bin/limitador /bin/sshlimiter /bin/limpar /bin/monitor /bin/monitorar /bin/mudardata /bin/mudarlimite /bin/mudarsenha /bin/velocidade /bin/velocimetro /bin/velocimetro.py > /dev/null
 rm -r /root/ExpCleaner.sh /root/CriarUsuario.sh /root/sshlimiter.sh > /dev/null
+apt-get purge dropbear -y
+apt-get autoremove dropbear -y
+yum purge dropbear -y
+rm -r /etc/dropbear
 apt-get install squid3 bc screen nano unzip dos2unix wget -y
 yum install squid bc screen nano unzip dos2unix wget -y
 wget ftp://cathbard.com/binary/inxi*.deb
