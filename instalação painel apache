@@ -1,0 +1,73 @@
+Instalação do Painel WEB de Gerenciamento SSH 2.7
+	Debian 8 32x / Debian 8 64x
+
+1 - Instalar
+
+	wget 164.132.22.54/painel/painel27/install && bash install
+
+• Continue somente apos aparecer a mensagem COMPLETADO COM SUCESSO.
+
+2 - Configurar arquivo de acesso ao Banco de Dados. Lembre-se de alterar SUA_SENHA para a senha que usou na instalação
+
+	touch /var/www/html/pages/system/conecta.php
+
+• Altere no codigo abaixo o $serv_pass e coloque a senha que utilizou na instalação no lugar de "SUA_SENHA"
+• Altere no codigo abaixo o $serv_ip e coloque o IP ou o Dominio Host da VPS que esta sendo instalado o painel no lugar de "SEU_IP-HOST"
+
+	echo '<?php
+ $serv_host = "localhost";
+ $serv_user = "root";
+ $serv_pass = "SUA_SENHA";
+ $serv_db = "ssh";
+ $serv_ip = "SEU_IP_HOST";
+ ?>' > /var/www/html/pages/system/conecta.php
+
+3 - Configurar Tabelas do Banco de Dados
+
+• Altere o comando abaixo trocando SUA_VPS, pelo ip da VPS que você esta fazendo a instalação.
+
+	curl SUA_VPS/create.php
+	cd /var/www/html
+	rm create.php
+	service apache2 restart
+
+4 - Configurarando comando de Agendamento Crontab
+
+• Os comandos a seguir serão responsaveis por fazer a atualização dos usuarios online a cada 3 minutos no painel.
+
+	crontab -e
+
+• Apos inserir o comando acima vai abrir um documento para edição, copie o texto abaixo
+
+	0-59/3 * * * * /usr/bin/php /var/www/html/pages/system/online_exe.php
+
+• Cole no documento na ultima linha.
+• Apos colar o comando aperte Ctrl+X e escola opção Y depois aperte Enter
+
+5 - Finalizando a Instalação
+
+	service apache2 restart
+	reboot
+
+FINAL
+• Pronto agora seu painel ja esta pronto, voce pode logar da seguinte forma:
+
+	IP_DOMINIO-VPS/admin/
+	Usuario: admin
+	Senha: admin
+
+• Voce pode alterar os dados de login em configurações no painel de gerenciamento.
+• Lembrando que ainda falta configurar a VPS que sera o servidor ssh. CONTINUE ABAIXO NA VPS QUE SERA O SERVIDOR SSH
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Instalação Servidor SSH Cliente
+	Ubuntu 16.4 / Ubuntu 14.4 / Debian 8 32x
+
+1 - Instalar
+
+	wget 164.132.22.54/scripts_27/install && bash install
+
+FINAL
+• Pronto agora seu servidor ja está configurado e pronto para ser utilizado no painel de gerenciamento, basta adicionar atraves do login de Administrador.
+                  
